@@ -1,0 +1,80 @@
+@startuml
+
+abstract Fiche {
+  - String intitule
+  - double PTVTTC
+  +getters()
+  +setters()
+  +print()
+}
+
+class FicheTechnique {
+  - String responsable
+  - int nbCouvert
+  - double coutMatiere
+  - double coutFluide
+  - double coutElectricite
+  - double coutPersonnel
+  - double coefMulti
+  - double TVA
+  +<<cons>>FT(...)
+  +getters()
+  +setters()
+  +print()
+}
+
+class Etape {
+  - String numEtape
+  - String description
+  - int duree
+  +<<cons>>Etape(...)
+  +getters()
+  +setters()
+  
+}
+
+class Ingredient {
+  - int code
+  - String name
+  - Unite unite
+  - float prixUnitaire
+  - boolean allergene
+  +<<cons>>Ingredient(...)
+  +getters()
+  +setters()
+}
+
+class Etiquette {
+  - Date fabrication
+  - Date peremption
+  +<<cons>>Plat(...)
+  +getters()
+  +getters()
+  +print()
+}
+
+enum Unite {
+  kg
+  L
+  pce
+}
+
+class StockManager {
+  +DB
+  +<<cons>>StockManager()
+  +printStock()
+  +addStock(int code, double quantite)
+  +removeStock(int code, double quantite)
+  +modifyStock(int code, attribut, value)
+  +createStock(...)
+  +removeStock(...)
+}
+
+Fiche <|-- FicheTechnique
+Fiche <|-- Etiquette
+Fiche "1" o-right- "*" Ingredient
+Fiche -left[hidden]- Unite
+FicheTechnique "1" o-left- "*" Etape
+
+
+@enduml
