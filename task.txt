@@ -1,0 +1,47 @@
+Faire une base de données de Fiches Techniques avec :
+
+Une Fiche technique est composé de
+	nom STRING
+	responsable STRING
+	nbCouvert INT
+	intitulé STRING
+	ingredients(denrée, unité, quantité)
+	descriptif technique
+		n° phase
+		technique de réalisation
+		durée (optionnel)
+	cout et prix de vente
+		cout matière
+		cout personnel
+		cout fluide
+		TVA
+		=>PVHT
+	PVTTC = PTVHT/nbCouvert * (1+TVA)
+
+Valeur à pouvoir modifier :
+	TVA (18%)
+	Cout matière
+	Assaisonnement (2,5%)
+	Coeff multiplicateur || cout employé + cout fluides + coef multiplicateur
+
+Zone Texte :
+	Progression (technique de réalisation)
+
+Recherche et modification
+
+DB ingrédients (code INT, nom STRING, unite STRING, PU FLOAT, allergene BOOLEAN)
+DB recettesBase (code INT, nom STRING, ingredients[Ingredients])
+
+Option à l'impression :
+	prix (facultatif)
+	Si fiche technique chiffré, le descriptif doit être à gauche
+
+Etiquetage :
+	Doit afficher tous les ingrédients
+	Les allergènes doivent être en gras
+	Date de fabrication + date de péremption (3j par défaut)
+
+Facultatif : Gestion des stocks
+	Possibilité d'indiquer les entrées
+	Calcul du reste théorique en fin de mois (basé sur les fiches techniques effectuées)
+	Calcul du reste réel à faire à la main
