@@ -71,10 +71,12 @@ class StockManager {
 }
 
 Fiche <|-- FicheTechnique
+FicheTechnique o-down-> FicheTechnique : > recette de base
 Fiche <|-- Etiquette
 Fiche "1" o-right- "*" Ingredient
 Fiche -left[hidden]- Unite
-FicheTechnique "1" o-left- "*" Etape
+FicheTechnique "1" o-down- "*" Etape
+Etiquette -right[hidden]- FicheTechnique
 
 
 @enduml
