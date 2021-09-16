@@ -28,6 +28,8 @@ Zone Texte :
 	Progression (technique de réalisation)
 
 Recherche et modification
+Autocompletion
+Cliquer sur une recette/FT doit afficher tous les ingrédients et cliquer sur un ingrédient doit afficher les plats dans lequel il est inclus
 
 DB ingrédients (code INT, nom STRING, unite STRING, PU FLOAT, allergene BOOLEAN)
 DB recettesBase (code INT, nom STRING, ingredients[Ingredients])
