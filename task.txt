@@ -34,9 +34,12 @@ Cliquer sur une recette/FT doit afficher tous les ingrédients et cliquer sur un
 DB ingrédients (code INT, nom STRING, unite STRING, PU FLOAT, allergene BOOLEAN)
 DB recettesBase (code INT, nom STRING, ingredients[Ingredients])
 
-Option à l'impression :
-	prix (facultatif)
+Option à l'affichage :
+	prix
 	Si fiche technique chiffré, le descriptif doit être à gauche
+
+Option à l'impression d'une Fiche Technique:
+	prix
 
 Etiquetage :
 	Doit afficher tous les ingrédients
