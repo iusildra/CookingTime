@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <meta charset="utf-8" /><link
+      rel="stylesheet"
+      href="./css/style.css"
+    /><meta charset="utf-8" /><link rel="stylesheet" href="./css/style.css" />
+    <header id="header" class="header-banner">
+      <div data-gjs="navbar" class="navbar">
+        <nav data-gjs="navbar-menu" class="navbar-menu">
+          <a href="./index.html" id="accueilLink" class="navbar-menu-link"
+            >Accueil</a
+          ><a
+            href="linkToIngredients"
+            id="ingredientLink"
+            class="navbar-menu-link"
+            >Ingrédients</a
+          ><a href="linkToStock" id="stockLink" class="navbar-menu-link"
+            >Stock</a
+          >
+        </nav>
+      </div>
+      <div class="container-width">
+        <div id="title" class="lead-title">It&#039;s Cooking Time !</div>
+        <div id="subTitle" class="sub-lead-title">
+          Un des plus simple, mais des plus efficaces gestionnaire de fiches
+          techniques culinaires !
+        </div>
+      </div>
+    </header>
+    <section name="ingredient" class="bdg-sect" id="ingredientSection">
+      <div id="stockHeaderDiv">
+        <h1 id="stockHeader">Gestion des Stocks</h1>
+      </div>
+      <div class="container-width"></div>
+      <div class="row" id="stockFormRow">
+        <form class="form" id="stockForm">
+          <div class="form-group">
+            <input
+              id="searchIngredient"
+              type="text"
+              placeholder="Entrer un code (R0000) ou un nom de recette"
+              class="input"
+            />
+          </div>
+          <div class="form-group">
+            <button id="searchFTButton" class="button">Rechercher</button>
+          </div>
+          <div class="form-group">
+            <button class="button" id="addStock">Entrée</button>
+            <button class="button" id="removeStock">Sortie</button>
+          </div>
+        </form>
+        <div class="row" id="displayStockRow">
+          <div id="displayStock">
+            Accès en lecture sur la base de données des ingrédients et des
+            stocks
+          </div>
+          <div id="displayStock2">
+            Accès en lecture sur la base de données des ingrédients et des
+            stocks
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <html></html>
+</html>

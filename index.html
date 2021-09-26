@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <meta charset="utf-8" /><link
+      rel="stylesheet"
+      href="./css/style.css"
+    /><meta charset="utf-8" /><link rel="stylesheet" href="./css/style.css" />
+    <header id="header" class="header-banner">
+      <div data-gjs="navbar" class="navbar">
+        <nav data-gjs="navbar-menu" class="navbar-menu">
+          <a href="./index.html" id="accueilLink" class="navbar-menu-link"
+            >Accueil</a
+          ><a
+            href="linkToIngredients"
+            id="ingredientLink"
+            class="navbar-menu-link"
+            >Ingrédients</a
+          ><a href="linkToStock" id="stockLink" class="navbar-menu-link"
+            >Stock</a
+          >
+        </nav>
+      </div>
+      <div class="container-width">
+        <div id="title" class="lead-title">It&#039;s Cooking Time !</div>
+        <div id="subTitle" class="sub-lead-title">
+          Un des plus simple, mais des plus efficaces gestionnaire de fiches
+          techniques culinaires !
+        </div>
+      </div>
+    </header>
+    <section
+      name="fichesTechnique"
+      id="fichesTechniqueSection"
+      class="bdg-sect"
+    >
+      <div id="ftTitle"><h1 id="ftTh1">Fiches Techniques</h1></div>
+      <div class="container-width"></div>
+      <div id="FTFormRow" class="row">
+        <form id="FTForm" class="form">
+          <div class="form-group">
+            <input
+              id="searchFT"
+              type="text"
+              placeholder="Entrer un code (R0000) ou un nom de recette"
+              class="input"
+            />
+          </div>
+          <div class="form-group">
+            <button id="searchFTButton" class="button">Rechercher</button>
+          </div>
+          <div class="form-group">
+            <button id="addFT" class="button">Ajout</button
+            ><button id="changeFT" class="button">Modification</button
+            ><button id="removeFT" class="button">Suppression</button>
+          </div>
+        </form>
+        <div class="cell" id="displayFTBox">
+          <div id="displayFT">Accès en lecture BD fiches techniques</div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
