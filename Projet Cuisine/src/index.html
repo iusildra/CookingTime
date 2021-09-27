@@ -23,7 +23,7 @@
       </div>
     </header>
     <div id="ftTitle"><h1 id="ftTh1">Fiches Techniques</h1></div>
-    <div id="FTFormRow" class="row" style="width:100%">
+    <div id="FTFormRow" class="row" style="width:100%; display: none;">
       <div id="FTFormCol" class="column" style="float:left; border-right: 1px; border-color: black;">
         <form id="FTForm" class="form" style="width:200px;">
           <div class="form-group">
@@ -47,33 +47,72 @@
         </div>
       </div>
     </div>
-    <div class="row" style="float: right;">
+    <div class="row" style="width:100%">
       <h3>Intitule</h3>
       <div class="row">
         <div class="row">
-          <input type="text" id="intituleFiche" placeholder="Intitulé">
+          <input type="text" id="intituleRecette" placeholder="Intitulé">
+          <input type="number" id="TVA" placeholder="tva">
+          <select id="type">
           <input type="text" id="nomRespondable" placeholder="Responsable">
+          <input type="text" id="nomAuteur" placeholder="Auteur">
+          <input type="number" id="nbCouvert" placeholder="nombre de couvert">
+          <label for="createIngredient">Un oubli ?</label>
+          <button id="createIngredient">Creation d'ingrédients</button>
         </div>
-        <div id="descriptif0" class=row>
-          <div class="row" id="idEtDuree">
-            <label for="idPhase">N° d'étape</label><br/>
-            <input type="number" id="nbPhase"><br/>
-            <label for="dureePhase">Durée</label><br/>
-            <input type="number" id="dureePhase">
+        <div id="descriptif" class="row" style="float: left">
+          <div class="column" id="descriptif_0">
+            <div class="column" id="idEtDuree_0" style="float: left">
+              <label for="idPhase_0">N° d'étape</label><br/>
+              <input type="number" id="nbPhase_0"><br/>
+              <label for="dureePhase_0">Durée</label><br/>
+              <input type="number" id="dureePhase_0"><br/>
+              <label for="textEtape_0">Description</label><br/>
+              <textarea id="textEtape_0"></textarea>
+            </div>
+            <div class="column" id="descriptif_0_ingr" style="float: left">
+              <h3>Ingrédients</h3>
+              <div id="ingredient_0" class="row">
+                <div class="column">
+                  <div id="ingredientName_0_0" class="column" style="float: left;">Nom_</div>
+                  <div id="ingredientQte_0_0" class="column" style="float: left;">Qte_</div>
+                  <div id="ingredientUnit_0_0" class="column" style="float: left;">Unite_</div>
+                </div>
+                <div class="column">
+                  <button id="eraseIngredient_0_0">X</button>
+                </div>
+              </div>
+              <div class="row" id="addIngredientRow">
+                <button id="addIngredient">+</button>
+              </div>
+            </div>
+            <div class="column" id="descriptif_0_recette" style="float: left">
+              <h3>Recette</h3>
+              <div id="recette_0" class="row">
+                <div class="column">
+                  <div id="recetteName_0_0" class="column" style="float: left">Nom_</div>
+                  <div id="recetteQte_0_0" class="column" style="float: left">Qte_</div>
+                </div>
+                <div class="column">
+                  <button id="eraseRecette_0_0">X</button>
+                </div>
+              </div>
+              <div class="row" id="addRecetteRow">
+                <button id="addRecette">+</button>
+              </div>
+            </div>
           </div>
-          <div class="row" id="etape">
-            <label for="etapeText">Description</label><br/>
-            <textarea id="etapeText"></textarea>
+          <div class="column" id="erase_0">
+            <button id="eraseDesc_0">SuppEtape</button>
           </div>
         </div>
-      </div>
-      <div class="row">
+      <div class="row" style="float: left">
         <button id="addStep">+</button>
-        <button id="rmStep">-</button>
       </div>
-      <div class="row">
+      <div class="row" style="float: left;">
         <button id="suppressFT">Suppression</button>
         <button id=editFT>Edition</button>
+        <button id=previewFT>Preview</button>
         <button id="printFT">Impression</button>
       </div>
     </div>
