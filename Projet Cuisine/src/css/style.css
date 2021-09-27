@@ -1,0 +1,25 @@
+.row{
+    display:flex;
+    justify-content:flex-start;
+    align-items:stretch;
+    flex-wrap:wrap;
+    padding:10px;
+}
+
+.column{
+    min-height:75px;
+    flex-basis:100%;
+    float: left;
+}
+
+.column2{
+    min-height:75px;
+    flex-basis:50%;
+    float: left;
+}
+
+.column3{
+    min-height:75px;
+    flex-basis:33%;
+    float: left;
+}

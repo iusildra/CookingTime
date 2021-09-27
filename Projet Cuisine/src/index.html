@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header class="header-banner">
@@ -23,8 +23,8 @@
       </div>
     </header>
     <div id="ftTitle"><h1 id="ftTh1">Fiches Techniques</h1></div>
-    <div id="FTFormRow" class="row" style="width:100%; display: none;">
-      <div id="FTFormCol" class="column" style="float:left; border-right: 1px; border-color: black;">
+    <div id="FTFormRow" class="row">
+      <div id="FTFormCol" class="column2" style="flex-basis: 200px;">
         <form id="FTForm" class="form" style="width:200px;">
           <div class="form-group">
             <input id="searchFT" type="text" placeholder="Entrer un code (R0000) ou un nom de recette"/>
@@ -32,25 +32,20 @@
           <div class="form-group">
             <button id="searchFTButton">Rechercher</button>
           </div>
-          <div class="form-group">
-            <button id="addFT" class="button">Ajout</button>
-          </div>
-          <div class="generation" style="margin-top : 20px; ">
-            <button id="createMeal">Création de plat</button>
-            <button id="etiquette">Impression d'étiquette</button>
-          </div>
         </form>
       </div>
-      <div id="FTListDisplay" style="float:left; width:auto; height:200px">
+      <div id="FTListDisplay" class="column2" style="flex-basis: auto">
           <div class="cell" id="displayFTBox">
           <div id="displayFT">Accès en lecture BD fiches techniques</div>
         </div>
       </div>
     </div>
-    <div class="row" style="width:100%">
-      <h3>Intitule</h3>
+    <div class="row">
       <div class="row">
-        <div class="row">
+        <h3>Intitule</h3>
+      </div>
+      <div class="row">
+        <div class="column">
           <input type="text" id="intituleRecette" placeholder="Intitulé">
           <input type="number" id="TVA" placeholder="tva">
           <select id="type">
@@ -60,9 +55,9 @@
           <label for="createIngredient">Un oubli ?</label>
           <button id="createIngredient">Creation d'ingrédients</button>
         </div>
-        <div id="descriptif" class="row" style="float: left">
+        <div id="descriptif" class="colum">
           <div class="column" id="descriptif_0">
-            <div class="column" id="idEtDuree_0" style="float: left">
+            <div class="column3" id="idEtDuree_0">
               <label for="idPhase_0">N° d'étape</label><br/>
               <input type="number" id="nbPhase_0"><br/>
               <label for="dureePhase_0">Durée</label><br/>
@@ -70,31 +65,31 @@
               <label for="textEtape_0">Description</label><br/>
               <textarea id="textEtape_0"></textarea>
             </div>
-            <div class="column" id="descriptif_0_ingr" style="float: left">
+            <div class="column3" id="descriptif_0_ingr">
               <h3>Ingrédients</h3>
               <div id="ingredient_0" class="row">
                 <div class="column">
-                  <div id="ingredientName_0_0" class="column" style="float: left;">Nom_</div>
-                  <div id="ingredientQte_0_0" class="column" style="float: left;">Qte_</div>
-                  <div id="ingredientUnit_0_0" class="column" style="float: left;">Unite_</div>
-                </div>
-                <div class="column">
-                  <button id="eraseIngredient_0_0">X</button>
+                  <div id="ingredientName_0_0" class="column">Nom_</div>
+                  <div id="ingredientQte_0_0" class="column">Qte_</div>
+                  <div id="ingredientUnit_0_0" class="column">Unite_</div>
+                  <div class="column">
+                    <button id="eraseIngredient_0_0">X</button>
+                  </div>
                 </div>
               </div>
               <div class="row" id="addIngredientRow">
                 <button id="addIngredient">+</button>
               </div>
             </div>
-            <div class="column" id="descriptif_0_recette" style="float: left">
+            <div class="column3" id="descriptif_0_recette" >
               <h3>Recette</h3>
               <div id="recette_0" class="row">
                 <div class="column">
                   <div id="recetteName_0_0" class="column" style="float: left">Nom_</div>
                   <div id="recetteQte_0_0" class="column" style="float: left">Qte_</div>
-                </div>
-                <div class="column">
-                  <button id="eraseRecette_0_0">X</button>
+                  <div class="column">
+                    <button id="eraseRecette_0_0">X</button>
+                  </div>
                 </div>
               </div>
               <div class="row" id="addRecetteRow">
@@ -106,14 +101,19 @@
             <button id="eraseDesc_0">SuppEtape</button>
           </div>
         </div>
-      <div class="row" style="float: left">
+      </div>
+      <div class="row">
         <button id="addStep">+</button>
       </div>
-      <div class="row" style="float: left;">
-        <button id="suppressFT">Suppression</button>
-        <button id=editFT>Edition</button>
-        <button id=previewFT>Preview</button>
-        <button id="printFT">Impression</button>
+      <div class="row">
+        <div class="colum">
+          <button id="addFT" class="button">Ajout</button>
+          <button id="suppressFT">Suppression</button>
+          <button id=editFT>Edition</button>
+          <button id=previewFT>Preview</button>
+          <button id="etiquette">Impression d'étiquette</button>
+          <button id="printFT">Impression</button>
+        </div>
       </div>
     </div>
   </body>
