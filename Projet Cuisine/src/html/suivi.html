@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <header class="header-banner">
+    <div data-gjs="navbar" class="navbar">
+      <nav data-gjs="navbar-menu" class="navbar-menu">
+        <a href="../index.html" class="navbar-menu-link">Accueil</a>
+        <a href="ingredients.html" class="navbar-menu-link">Ingrédients</a>
+        <a href="stock.html" class="navbar-menu-link">Stock</a>
+        <a href="#" class="navbar-menu-link">Suivi</a>
+      </nav>
+    </div>
+    <div class="container-width">
+      <div class="lead-title">It's Cooking Time !</div>
+      <div class="sub-lead-title">
+        Un des plus simple, mais des plus efficaces gestionnaire de fiches
+        techniques culinaires !
+      </div>
+    </div>
+  </header>
+    <div>
+      <h1>Suivi d'activité</h1>
+    </div>
+    <div class="container-width"></div>
+    <div class="row">
+      <form class="form" id="suiviForm" style="float: left">
+        <div class="form-group">
+          <input id="searchSuivi" type="date" placeholder="Entrer une date"/>
+        </div>
+        <div class="form-group">
+          <button id="searchSuiviButton" class="button">Rechercher</button>
+        </div>
+      </form>
+      <div class="columns" id="displaySuiviCol" style="float: left">
+        <div id="displaySuivi">
+          Accès en lecture sur la base de données des ingrédients
+        </div>
+      </div>
+    </div>
+    <div class=row>
+        <h3>Activite du mois NOM_MOIS</h3>
+        <div class="row">
+            <div class="row" id="fiche0">AFFICHAGE EN LISTE</div>
+        </div>
+    </div>
+
+  </body>
+</html>

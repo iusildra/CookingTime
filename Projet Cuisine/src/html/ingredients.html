@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <header class="header-banner">
+    <div data-gjs="navbar" class="navbar">
+      <nav data-gjs="navbar-menu" class="navbar-menu">
+        <a href="../index.html" class="navbar-menu-link">Accueil</a>
+        <a href="#" class="navbar-menu-link">Ingrédients</a>
+        <a href="stock.html" class="navbar-menu-link">Stock</a>
+        <a href="suivi.html" class="navbar-menu-link">Suivi</a>
+      </nav>
+    </div>
+    <div class="container-width">
+      <div class="lead-title">It's Cooking Time !</div>
+      <div class="sub-lead-title">
+        Un des plus simple, mais des plus efficaces gestionnaire de fiches
+        techniques culinaires !
+      </div>
+    </div>
+  </header>
+    <div>
+      <h1>Ingrédients</h1>
+    </div>
+    <div class="container-width"></div>
+    <div class="row">
+      <form class="form" id="ingredientForm" style="float: left">
+        <div class="form-group">
+          <input id="searchIngredient" type="text" placeholder="Entrer un code (I0000) ou un nom"/>
+        </div>
+        <div class="form-group">
+          <button id="searchIngredientButton" class="button">Rechercher</button>
+        </div>
+        <div class="form-group">
+          <button class="button" id="addIngredient">Ajout</button>
+        </div>
+      </form>
+      <div class="columns" style="float: left">
+        <div id="displayIngredient">
+          Accès en lecture sur la base de données des ingrédients
+        </div>
+      </div>
+    </div>
+    <div >
+      <div class="row">
+        <h3>Nom de l'Ingrédient</h3>
+        <label for="type">Type</label>
+        <select id="type"></select>
+        <label for="nomIngredient">Nom</label>
+        <input id="nomIngredient" placeholder="nom">
+        <label for="prixU">Prix unitaire</label>
+        <input type="number" id="prixU">
+        <label for="unite">Unite</label>
+        <select id="unite"></select>
+        <label for="tva">Valeur de TVA</label>
+        <select id="tva"></select>
+        <label for="allergene">Allergène ?</label>
+        <input type="checkbox" id="allergene">
+      </div>
+      <div class="row">
+        <button id="supressIngredient">Suppression</button>
+        <button id="supressIngredient">Modification</button>
+        <button id="supressIngredient">Suppression</button>
+      </div>
+    </div>
+
+  </body>
+</html>

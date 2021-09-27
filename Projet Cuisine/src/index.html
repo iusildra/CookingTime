@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="" />
+  </head>
+  <body>
+    <header class="header-banner">
+      <div data-gjs="navbar" class="navbar">
+        <nav data-gjs="navbar-menu" class="navbar-menu">
+          <a href="#" id="accueilLink" class="navbar-menu-link">Accueil</a>
+          <a href="html/ingredients.html" id="ingredientLink" class="navbar-menu-link">Ingrédients</a>
+          <a href="html/stock.html" id="stockLink" class="navbar-menu-link">Stock</a>
+          <a href="html/suivi.html" class="navbar-menu-link">Suivi</a>
+        </nav>
+      </div>
+      <div class="container-width">
+        <div id="title" class="lead-title">It's Cooking Time !</div>
+        <div id="subTitle" class="sub-lead-title">
+          Un des plus simple, mais des plus efficaces gestionnaire de fiches
+          techniques culinaires !
+        </div>
+      </div>
+    </header>
+    <div id="ftTitle"><h1 id="ftTh1">Fiches Techniques</h1></div>
+    <div id="FTFormRow" class="row" style="width:100%">
+      <div id="FTFormCol" class="column" style="float:left; border-right: 1px; border-color: black;">
+        <form id="FTForm" class="form" style="width:200px;">
+          <div class="form-group">
+            <input id="searchFT" type="text" placeholder="Entrer un code (R0000) ou un nom de recette"/>
+          </div>
+          <div class="form-group">
+            <button id="searchFTButton">Rechercher</button>
+          </div>
+          <div class="form-group">
+            <button id="addFT" class="button">Ajout</button>
+          </div>
+          <div class="generation" style="margin-top : 20px; ">
+            <button id="createMeal">Création de plat</button>
+            <button id="etiquette">Impression d'étiquette</button>
+          </div>
+        </form>
+      </div>
+      <div id="FTListDisplay" style="float:left; width:auto; height:200px">
+          <div class="cell" id="displayFTBox">
+          <div id="displayFT">Accès en lecture BD fiches techniques</div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="float: right;">
+      <h3>Intitule</h3>
+      <div class="row">
+        <div class="row">
+          <input type="text" id="intituleFiche" placeholder="Intitulé">
+          <input type="text" id="nomRespondable" placeholder="Responsable">
+        </div>
+        <div id="descriptif0" class=row>
+          <div class="row" id="idEtDuree">
+            <label for="idPhase">N° d'étape</label><br/>
+            <input type="number" id="nbPhase"><br/>
+            <label for="dureePhase">Durée</label><br/>
+            <input type="number" id="dureePhase">
+          </div>
+          <div class="row" id="etape">
+            <label for="etapeText">Description</label><br/>
+            <textarea id="etapeText"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <button id="addStep">+</button>
+        <button id="rmStep">-</button>
+      </div>
+      <div class="row">
+        <button id="suppressFT">Suppression</button>
+        <button id=editFT>Edition</button>
+        <button id="printFT">Impression</button>
+      </div>
+    </div>
+  </body>
+</html>
