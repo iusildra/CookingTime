@@ -27,16 +27,34 @@
       <div id="FTFormCol" class="column2" style="flex-basis: 200px;">
         <form id="FTForm" class="form" style="width:200px;">
           <div class="form-group">
-            <input id="searchFT" type="text" placeholder="Entrer un code (R0000) ou un nom de recette"/>
+            <input id="searchFT" type="text" placeholder="Entrez une fiche technique"/>
           </div>
           <div class="form-group">
             <button id="searchFTButton">Rechercher</button>
+            <button id="searchFTButton">Nouvelle FT</button></div>
           </div>
         </form>
       </div>
+
+      <input id="nomFT" type="text" placeholder="Intitulé Fiche Technique" style="width: 240px;" />
+      <input id="TVA" type="text" placeholder="TVA" style="width: 40px;" /> %
+      <input id="respo" type="text" placeholder="Responsable" style="width: 200px;" />
+	<div>
+      		<input id="type" type="text" placeholder="Type" style="width: 100px;" />
+      		<input id="auteur" type="text" placeholder="Auteur" style="width: 150px;" />
+	</div>
+	<div>
+		Nombre de couverts :
+      		<input id="nbrCouverts" type="text" placeholder="Nombre" style="width: 60px;" />
+			<div>
+            <button id="searchFTButton">Impression</button>
+            <button id="searchFTButton">Sauvegarder les changements</button>
+            <button id="searchFTButton">Suppression FT</button>
+		</div>
+	</div>
+		
       <div id="FTListDisplay" class="column2" style="flex-basis: auto">
           <div class="cell" id="displayFTListBox">
-          <div id="displayFTList">Accès en lecture BD fiches techniques</div>
         </div>
       </div>
     </div>
