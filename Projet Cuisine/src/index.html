@@ -35,12 +35,12 @@
         </form>
       </div>
       <div id="FTListDisplay" class="column2" style="flex-basis: auto">
-          <div class="cell" id="displayFTBox">
-          <div id="displayFT">Accès en lecture BD fiches techniques</div>
+          <div class="cell" id="displayFTListBox">
+          <div id="displayFTList">Accès en lecture BD fiches techniques</div>
         </div>
       </div>
     </div>
-    <div class="row">
+    <div class="row" id="displayFT" style="display: none;">
       <div class="row">
         <h3>Intitule</h3>
       </div>
@@ -48,7 +48,8 @@
         <div class="column">
           <input type="text" id="intituleRecette" placeholder="Intitulé">
           <input type="number" id="TVA" placeholder="tva">
-          <select id="type">
+          <label for="typeFiche">Type</label>
+          <select id="typeFiche">
           <input type="text" id="nomRespondable" placeholder="Responsable">
           <input type="text" id="nomAuteur" placeholder="Auteur">
           <input type="number" id="nbCouvert" placeholder="nombre de couvert">
