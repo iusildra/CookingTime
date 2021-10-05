@@ -1,25 +1,73 @@
-.row{
-    display:flex;
-    justify-content:flex-start;
-    align-items:stretch;
-    flex-wrap:wrap;
-    padding:10px;
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 10px;
+  width: 100%;
 }
 
-.column{
-    min-height:75px;
-    flex-basis:100%;
-    float: left;
+.column {
+  float: left;
+  display: flex;
+  flex-basis: auto;
+  min-height: 75px;
 }
 
-.column2{
-    min-height:75px;
-    flex-basis:50%;
-    float: left;
+.affichageFT {
+  display: flex;
+  float: left;
+  padding: 10px;
+  min-height: 100px;
 }
 
-.column3{
-    min-height:75px;
-    flex-basis:33%;
-    float: left;
+.colDescription1 {
+  float: left;
+  width: 400px;
+  min-height: 75px;
+  border-right: 1px solid black;
+  padding: 10px;
+}
+
+.colDescription2 {
+  float: left;
+  width: 300px;
+  min-height: 75px;
+  border-right: 1px solid black;
+  padding: 10px;
+}
+
+.etape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 10px;
+  border: 2px dotted black;
+}
+
+.effacerEtape {
+  float: right;
+  width: 100px;
+}
+
+button {
+  margin-right: 10px;
+}
+
+table,
+th,
+td {
+  padding: 5px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#descriptionFiche {
+  padding: 20px;
+  border-bottom: 2px solid black;
+}
+
+#FormulaireFT {
+  float: right;
 }
