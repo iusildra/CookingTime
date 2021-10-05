@@ -30,11 +30,11 @@
             <input id="searchFT" type="text" placeholder="Entrez une fiche technique"/>
           </div>
           <div class="form-group">
-            <button id="searchFTButton">Rechercher</button>
-            <button id="searchFTButton">Nouvelle FT</button></div>
+            <button id="rechercherFiche">Rechercher</button>
+            <button id="ajouterFiche">Nouvelle FT</button></div>
           </div>
-        </form>
-      </div>
+      </form>
+    </div>
 
       <input id="nomFT" type="text" placeholder="Intitulé Fiche Technique" style="width: 240px;" />
       <input id="TVA" type="text" placeholder="TVA" style="width: 40px;" /> %
@@ -44,13 +44,14 @@
       		<input id="auteur" type="text" placeholder="Auteur" style="width: 150px;" />
 	</div>
 	<div>
+        <div>
 		Nombre de couverts :
       		<input id="nbrCouverts" type="text" placeholder="Nombre" style="width: 60px;" />
 			<div>
-            <button id="searchFTButton">Impression</button>
-            <button id="searchFTButton">Sauvegarder les changements</button>
-            <button id="searchFTButton">Suppression FT</button>
-		</div>
+              <button id="imprimerFiche">Impression</button>
+              <button id="editerFiche">Sauvegarder les changements</button>
+              <button id="SupprFiche">Suppression FT</button>
+		    </div>
 	</div>
 		
       <div id="FTListDisplay" class="column2" style="flex-basis: auto">
@@ -58,7 +59,7 @@
         </div>
       </div>
     </div>
-    <div class="row" id="displayFT" style="display: none;">
+    <div class="row" id="displayFT">
       <div class="row">
         <h3>Intitule</h3>
       </div>
