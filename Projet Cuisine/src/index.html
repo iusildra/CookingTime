@@ -20,19 +20,19 @@
 
     <h1>Fiches Techniques</h1>
     
-    <div class="affichageFT">
+    <div class="affichage">
       <fieldset name="RechercherFT">
         <legend><h2>Recherche</h2></legend>
-          <input id="searchFT" type="text" placeholder="Entrez une fiche technique"/>
-          <div>
-            <button id="searchFTButton">Rechercher</button>
-            <button id="searchFTButton">Nouvelle FT</button>
-          </div>
+        <input id="chercherFT" type="text" placeholder="Entrez une fiche technique"/>
+        <div>
+          <button id="confirmerRechercheFT">Rechercher</button>
+          <!--<button id="searchFTButton">Nouvelle FT</button>-->
+        </div>
       </fieldset>
 
       <fieldset name="AffichageListFT">
         <legend><h2>Liste des fiches techniques</h2></legend>
-            <div id="affichageListeFT"></div>
+        <div id="affichageListeFT"></div>
       </fieldset>
     </div>
 
@@ -42,62 +42,62 @@
         <legend><h2>TITRE DE LA FICHE</h2></legend>
 
         <div id="descriptionFiche">  
-            <table>
-              <tr>
-                <td>
-                  <label for="intituleRecette">Intitulé</label>
-                  <input type="text" id="intituleRecette" placeholder="Intitulé">
-                </td>
-                <td>
-                  <label for="TVA">TVA</label>
-                  <input type="number" id="TVA" placeholder="tva">
-                </td>
-                <td>
-                  <label for="typeFiche">Type</label>
-                  <select id="typeFiche">
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  <label for="nomRespondable">Responsable</label>
-                  <input type="text" id="nomRespondable" placeholder="Responsable">
-                </td>
-                <td>
-                  <label for="nomAuteur">Auteur</label>
-                  <input type="text" id="nomAuteur" placeholder="Auteur">
-                </td>
-                <td>
-                  <label for="nbCouvert">Nombre de couvert</label>
-                  <input type="number" id="nbCouvert" placeholder="nombre de couvert">
-                </td>
-              </tr>
-            </table>
-            
-            <label for="createIngredient">Un oubli ?</label>
-            <button id="createIngredient">Creation d'ingrédients</button>
+          <table>
+            <tr>
+              <td>
+                <label for="intituleRecette">Intitulé</label>
+                <input type="text" id="intituleRecette" placeholder="Intitulé">
+              </td>
+              <td>
+                <label for="TVA">TVA</label>
+                <input type="number" id="TVA" placeholder="tva">
+              </td>
+              <td>
+                <label for="typeFiche">Type</label>
+                <select id="typeFiche">
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <label for="nomRespondable">Responsable</label>
+                <input type="text" id="nomRespondable" placeholder="Responsable">
+              </td>
+              <td>
+                <label for="nomAuteur">Auteur</label>
+                <input type="text" id="nomAuteur" placeholder="Auteur">
+              </td>
+              <td>
+                <label for="nbCouvert">Nombre de couvert</label>
+                <input type="number" id="nbCouvert" placeholder="nombre de couvert">
+              </td>
+            </tr>
+          </table>
+          
+          <label for="createIngredient">Un oubli ?</label>
+          <button id="createIngredient">Creation d'ingrédients</button>
         </div>
 
         <fieldset name=Descriptif>
           <legend><h3>Descriptif</h3></legend>
 
           <div class="etape" id="etape_0">
-            <div class="colDescription1" id=description>
+            <div class="colDescription1" id="description_0">
               <label for="idPhase_0">N° d'étape</label><br/>
-              <input type="number" id="nbPhase_0"><br/>
+              <input type="number" id="nbPhase_0" placeholder="0"><br/>
               <label for="dureePhase_0">Durée</label><br/>
-              <input type="number" id="dureePhase_0"><br/>
+              <input type="number" id="dureePhase_0" placeholder="0"><br/>
               <label for="textEtape_0">Description</label><br/>
               <textarea class="descriptionFT" id="textEtape_0" rows="10" cols="45"></textarea>
             </div>
-            <div class="colDescription2" id="ingredients">
+            <div class="colDescription2">
               <table id="listeIngredient">
                 <tr>
                   <th>Ingredient</th>
                   <th>Quantité</th>
                 </tr>
                 <tr>
-                  <td>Anticonstitutionnellement</td>
-                  <td>1000</td>
+                  <td><input type="text" id="ingredient_0", placeholder="nom de l'ingredient"></td>
+                  <td><input type="number" id="ingredientQte_0" placeholder="000"></td>
                 </tr>
               </table>
               <!--<div id="ingredient_0" class="row">
@@ -113,15 +113,15 @@
                 <button id="ajoutIngredientListe">+</button>
               </div>
             </div>
-            <div class="colDescription2" id="sousRecette">
+            <div class="colDescription2">
               <table id="listeSousRecette">
                 <tr>
                   <th>Recette</th>
                   <th>Quantité</th>
                 </tr>
                 <tr>
-                  <td><textarea>Anticonstitutionnellement</textarea></td>
-                  <td>1000</td>
+                  <td><input type="text" id="recette_0" placeholder="nom de l'ingredient"></td>
+                  <td><input type="number" id="recetteQte_0" placeholder="000"></td>
                 </tr>
               </table>
               <!--<div id="recette_0" class="row">
@@ -148,16 +148,14 @@
           <div class="row"><button id="addStep">+</button></div>
 
         </fieldset>
+        <div class="row" name="actionFT">
+          <button id="addFT" class="button">Ajout</button>
+          <button id="suppressFT">Suppression</button>
+          <button id=editFT>Edition</button>
+          <button id="etiquette">Impression d'étiquette</button>
+          <button id="printFT">Impression</button>
+        </div>
       </fieldset>
-    </div>
-
-
-    <div class="row" name="actionFT">
-      <button id="addFT" class="button">Ajout</button>
-      <button id="suppressFT">Suppression</button>
-      <button id=editFT>Edition</button>
-      <button id="etiquette">Impression d'étiquette</button>
-      <button id="printFT">Impression</button>
     </div>
   </body>
 </html>
