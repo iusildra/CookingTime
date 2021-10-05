@@ -15,10 +15,7 @@
                 </nav>
             </div>
             <div class="container-width">
-                <div class="lead-title">It's Cooking Time !</div>
                 <div class="sub-lead-title">
-                    Un des plus simple, mais des plus efficaces gestionnaire de fiches
-                    techniques culinaires !
                 </div>
             </div>
         </header>
@@ -29,19 +26,46 @@
         <div class="row">
             <form class="form" id="stockForm">
                 <div class="form-group">
-                    <input id="searchStock" type="text" placeholder="Entrer un code (R0000) ou un nom de recette" class="input"/>
+                    <input id="searchStock" type="text" placeholder="Entrer un nom de recette ou un code" class="input" style="width: 220px;" />
                 </div>
                 <div class="form-group">
                     <button id="searchStockButton" class="button">Rechercher</button>
                 </div>
                 <div class="form-group">
-                    <button class="button" id="addStock">Ajout</button>
                 </div>
             </form>
-            <div class="row" id="displayStockRow">
-                <div id="displayStock">
-                    Accès en lecture sur la base de données des ingrédients et des stocks
-                </div>
+            
+		<p></p>
+		<h2>Gestion de ma cuisine</h2>
+	<section class=bloc1>
+		<h3><span class="encadrer-un-contenu">Gérer mon stock</span></h3>
+        <label for="entrerQuantiteStock">Qté</label>
+        <input type="number" placeholder="Quantité">
+        <label for="choisirIngredient">Ingrédient</label>
+        <input type="text" placeholder="Ingrédient">
+        <button id="deleteStock" class="button">Suppression</button></p>
+        <button id="addStock" class="button">Ajout</button></p>
+        <button id="visualiserStock" class="button">Visualiser mon stock</button></p>
+	</section>
+
+	<section class=bloc2>
+		<h3 class="gerer">Gérer les coûts</h3>
+		<ul class=frais>
+		<p>Frais de personnel</p>
+		<p>Frais de fluide</p>
+		<p>Perte de matière</p>
+		<p>Frais fixe</p>
+	</ul>
+        <button id="saveChanges">Enregistrer</button>
+	</section>
+
+
+
+
+
+	</body>
+</html>
+                
             </div>
         </div>
     </body>
