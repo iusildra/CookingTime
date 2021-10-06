@@ -7,7 +7,7 @@ const champRechercheFiche = document.getElementById("champFiche");
 const boutonAddIngredientInFiche = document.getElementById("ajouterIngredientFiche");
 const boutonAddEtape = document.getElementById("ajouterEtape");
 
-
+je suis bg
 
 const boutonAddIngredient = document.getElementById("ajouterIngredient");
 const boutonAddStock = document.getElementById("ajouterRecette");
