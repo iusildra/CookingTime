@@ -6,16 +6,18 @@ const boutonImprimerFiche = document.getElementById("imprimerFiche");
 const champRechercheFiche = document.getElementById("champFiche");
 const boutonAddIngredientInFiche = document.getElementById("ajouterIngredientFiche");
 const boutonAddEtape = document.getElementById("ajouterEtape");
+const boutonSuppEtape = document.getElementById("effacerEtape_0");
+const boutonAddIngredientRacourci = document.getElementById("createIngredient");
 
-je suis bg
+
 
 const boutonAddIngredient = document.getElementById("ajouterIngredient");
+const boutonSupprIngredient = document.getElementById("supressIngredient");
+const boutonRechercheIngredient = document.getElementById("chercherIngredient");
+
 const boutonAddStock = document.getElementById("ajouterRecette");
 const boutonSupprStock = document.getElementById("ajouterIngredient");
 
-const boutonSupprIngredient = document.getElementById("ajouterIngredient");
 
-const boutonRechercheIngredient = document.getElementById("ajouterIngredient");
+
 const boutonRechercheSuivi = document.getElementById("ajouterRecette");
-
-
