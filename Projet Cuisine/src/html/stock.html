@@ -1,72 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="" />
-    </head>
-    <body>
-        <header class="header-banner">
-            <div data-gjs="navbar" class="navbar">
-                <nav data-gjs="navbar-menu" class="navbar-menu">
-                    <a href="../index.html" class="navbar-menu-link">Accueil</a>
-                    <a href="ingredients.html" class="navbar-menu-link">Ingrédients</a>
-                    <a href="#" class="navbar-menu-link">Stock</a>
-                    <a href="suivi.html" class="navbar-menu-link">Suivi</a>
-                </nav>
-            </div>
-            <div class="container-width">
-                <div class="sub-lead-title">
-                </div>
-            </div>
-        </header>
-        <div>
-            <h1>Gestion des Stocks</h1>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header class="header-banner">
+      <div data-gjs="navbar" class="navbar">
+        <nav data-gjs="navbar-menu" class="navbar-menu">
+          <a href="../index.html" class="navbar-menu-link">Accueil</a>
+          <a href="ingredients.html" class="navbar-menu-link">Ingrédients</a>
+          <a href="#" class="navbar-menu-link">Stock</a>
+          <a href="suivi.html" class="navbar-menu-link">Suivi</a>
+        </nav>
+      </div>
+    </header>
+
+    <h1>Gestion de ma cuisine</h1>
+
+    <div class="affichage">
+      <fieldset name="RechercherStock">
+        <legend><h2>Gérer mon stock</h2></legend>
+        <div name="chercherStock" class="stockeQte">
+          <input id="chercherStock" type="text" placeholder="Ingredient" />
+          <button id="confirmerRechercheStock">Rechercher</button>
         </div>
-        <div class="container-width"></div>
-        <div class="row">
-            <form class="form" id="stockForm">
-                <div class="form-group">
-                    <input id="searchStock" type="text" placeholder="Entrer un nom de recette ou un code" class="input" style="width: 220px;" />
-                </div>
-                <div class="form-group">
-                    <button id="searchStockButton" class="button">Rechercher</button>
-                </div>
-                <div class="form-group">
-                </div>
-            </form>
-            
-		<p></p>
-		<h2>Gestion de ma cuisine</h2>
-	<section class=bloc1>
-		<h3><span class="encadrer-un-contenu">Gérer mon stock</span></h3>
-        <label for="entrerQuantiteStock">Qté</label>
-        <input type="number" placeholder="Quantité">
-        <label for="choisirIngredient">Ingrédient</label>
-        <input type="text" placeholder="Ingrédient">
-        <button id="deleteStock" class="button">Suppression</button></p>
-        <button id="addStock" class="button">Ajout</button></p>
-        <button id="visualiserStock" class="button">Visualiser mon stock</button></p>
-	</section>
 
-	<section class=bloc2>
-		<h3 class="gerer">Gérer les coûts</h3>
-		<ul class=frais>
-		<p>Frais de personnel</p>
-		<p>Frais de fluide</p>
-		<p>Perte de matière</p>
-		<p>Frais fixe</p>
-	</ul>
-        <button id="saveChanges">Enregistrer</button>
-	</section>
-
-
-
-
-
-	</body>
-</html>
-                
-            </div>
+        <div name="qte" class="stockQte">
+          <label for="stockQte">Quantité</label>
+          <input id="stockQte" type="number" placeholder="00" />
         </div>
-    </body>
+
+        <div name="actionStock" class="stockQte">
+          <button id="deleteStock" class="button">Suppression</button>
+          <button id="addStock" class="button">Ajout</button>
+        </div>
+
+        <button id="visualiserStock" class="button">
+          Visualiser mon stock
+        </button>
+      </fieldset>
+
+      <fieldset name="GererCout">
+        <legend><h2>Gestion des coûts</h2></legend>
+        <table>
+          <tr>
+            <td>
+              <label for="remunerationHoraire">Rémunération horaire</label>
+              <input id="remunerationHoraire" type="number" placeholder="00" />
+            </td>
+            <td>
+              <label for="coutFluide">Cout fluide</label>
+              <input id="coutFluide" type="number" placeholder="00" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="perteMatiere">Perte matière</label>
+              <input id="perteMatiere" type="number" placeholder="00" />
+            </td>
+            <td>
+              <label for="fraisFixe">Frais fixe</label>
+              <input id="fraisFixe" type="number" placeholder="000" />
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </div>
+    <div>
+      <button id="saveChanges">Enregistrer</button>
+    </div>
+  </body>
 </html>

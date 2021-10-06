@@ -51,6 +51,14 @@
   width: 100px;
 }
 
+.stockQte {
+  margin: 20px 0px 20px 0px;
+}
+
+.actionSuivi {
+  padding: 10px;
+}
+
 button {
   margin-right: 10px;
 }
