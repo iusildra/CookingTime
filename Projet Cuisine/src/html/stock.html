@@ -5,35 +5,51 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <header class="header-banner">
-      <div data-gjs="navbar" class="navbar">
-        <nav data-gjs="navbar-menu" class="navbar-menu">
-          <a href="../index.html" class="navbar-menu-link">Accueil</a>
-          <a href="ingredients.html" class="navbar-menu-link">Ingrédients</a>
-          <a href="#" class="navbar-menu-link">Stock</a>
-          <a href="suivi.html" class="navbar-menu-link">Suivi</a>
+    <header>
+      <div data-gjs="navbar">
+        <nav data-gjs="navbar-menu">
+          <a href="../index.html">Accueil</a>
+          <a href="ingredients.html">Ingrédients</a>
+          <a href="#">Stock</a>
+          <a href="suivi.html">Suivi</a>
         </nav>
       </div>
     </header>
 
     <h1>Gestion de ma cuisine</h1>
 
-    <div class="affichage">
-      <fieldset name="RechercherStock">
+    <div class="zoneRecherche">
+      <fieldset>
         <legend><h2>Gérer mon stock</h2></legend>
-        <div name="chercherStock" class="stockeQte">
-          <input id="chercherStock" type="text" placeholder="Ingredient" />
-          <button id="confirmerRechercheStock">Rechercher</button>
-        </div>
 
-        <div name="qte" class="stockQte">
-          <label for="stockQte">Quantité</label>
-          <input id="stockQte" type="number" placeholder="00" />
-        </div>
+        <div id="chercherStock" class="stockeQte">
+          <input id="rechercher" type="text" placeholder="Ingredient" />
+          <button id="boutonRechercher">Rechercher</button>
 
-        <div name="actionStock" class="stockQte">
-          <button id="deleteStock" class="button">Suppression</button>
-          <button id="addStock" class="button">Ajout</button>
+          <div class="stockQte">
+            <label for="ajouterStock">Ajouter</label>
+            <input
+              id="ajouterStock"
+              type="number"
+              value="0"
+              min="0"
+              max="1000"
+            />
+            <button id="boutonAjouterStock" class="button">Ajout</button>
+          </div>
+          <div class="stockQte">
+            <label for="supprimerStock">Supprimer</label>
+            <input
+              id="supprimerStock"
+              type="number"
+              value="0"
+              min="0"
+              max="1000"
+            />
+            <button id="boutonSupprimerStock" class="button">
+              Suppression
+            </button>
+          </div>
         </div>
 
         <button id="visualiserStock" class="button">
@@ -41,34 +57,48 @@
         </button>
       </fieldset>
 
-      <fieldset name="GererCout">
+      <fieldset>
+        <legend><h2>Affichage des fiches de suivi</h2></legend>
+        <div id="affichageElement"></div>
+      </fieldset>
+
+      <fieldset>
         <legend><h2>Gestion des coûts</h2></legend>
-        <table>
+        <table id="couts">
           <tr>
             <td>
-              <label for="remunerationHoraire">Rémunération horaire</label>
-              <input id="remunerationHoraire" type="number" placeholder="00" />
+              <label for="coutHoraire">Rémunération horaire</label>
+              <input
+                id="coutHoraire"
+                type="number"
+                placeholder="0"
+                min="0"
+                max="1000"
+              />
             </td>
             <td>
               <label for="coutFluide">Cout fluide</label>
-              <input id="coutFluide" type="number" placeholder="00" />
+              <input id="coutFluide" type="number" placeholder="0" min="0" />
             </td>
           </tr>
           <tr>
             <td>
-              <label for="perteMatiere">Perte matière</label>
-              <input id="perteMatiere" type="number" placeholder="00" />
+              <label for="perteMatiere">Perte matière (%)</label>
+              <input
+                id="perteMatiere"
+                type="number"
+                placeholder="0"
+                min="0"
+                max="100"
+              />
             </td>
             <td>
               <label for="fraisFixe">Frais fixe</label>
-              <input id="fraisFixe" type="number" placeholder="000" />
+              <input id="fraisFixe" type="number" placeholder="0" min="0" />
             </td>
           </tr>
         </table>
       </fieldset>
-    </div>
-    <div>
-      <button id="saveChanges">Enregistrer</button>
     </div>
   </body>
 </html>

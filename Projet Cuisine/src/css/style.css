@@ -1,62 +1,41 @@
-.row {
+.zoneRecherche,
+.zoneAffichage {
   display: flex;
+}
+
+.informations {
+  max-width: 600px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-content: flex-start;
   flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: flex-start;
-  padding: 10px;
-  width: 100%;
 }
 
-.column {
-  float: left;
-  display: flex;
-  flex-basis: auto;
-  min-height: 75px;
-}
-
-.affichage {
-  display: flex;
-  float: left;
-  padding: 10px;
-  min-height: 100px;
-}
-
-.colDescription1 {
-  float: left;
-  width: 400px;
-  min-height: 75px;
-  border-right: 1px solid black;
-  padding: 10px;
-}
-
-.colDescription2 {
-  float: left;
-  width: auto;
-  min-height: 75px;
-  border-right: 1px solid black;
+.information {
+  margin: 10px;
+  font-weight: 100;
+  overflow: hidden;
+  text-align: center;
+  border: 1px dotted black;
   padding: 10px;
 }
 
 .etape {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: flex-start;
   padding: 10px;
   border: 2px dotted black;
-}
-
-.effacerEtape {
-  float: right;
-  width: 100px;
 }
 
 .stockQte {
   margin: 20px 0px 20px 0px;
 }
 
-.actionSuivi {
-  padding: 10px;
+.descriptif {
+  display: flex;
+}
+
+.action {
+  margin-top: 20px;
 }
 
 button {
@@ -69,13 +48,4 @@ td {
   padding: 5px;
   border: 1px solid black;
   border-collapse: collapse;
-}
-
-#descriptionFiche {
-  padding: 20px;
-  border-bottom: 2px solid black;
-}
-
-#FormulaireFT {
-  float: right;
 }

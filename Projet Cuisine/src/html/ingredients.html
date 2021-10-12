@@ -5,13 +5,13 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <header class="header-banner">
-      <div data-gjs="navbar" class="navbar">
-        <nav data-gjs="navbar-menu" class="navbar-menu">
-          <a href="../index.html" class="navbar-menu-link">Accueil</a>
-          <a href="#" class="navbar-menu-link">Ingrédients</a>
-          <a href="stock.html" class="navbar-menu-link">Stock</a>
-          <a href="suivi.html" class="navbar-menu-link">Suivi</a>
+    <header>
+      <div data-gjs="navbar">
+        <nav data-gjs="navbar-menu">
+          <a href="../index.html">Accueil</a>
+          <a href="#">Ingrédients</a>
+          <a href="stock.html">Stock</a>
+          <a href="suivi.html">Suivi</a>
         </nav>
       </div>
       <div class="container-width"></div>
@@ -19,67 +19,65 @@
 
     <h1>Ingrédients</h1>
 
-    <div class="affichage">
-      <fieldset name="RechercheIngredient">
+    <div class="zoneRecherche">
+      <fieldset>
         <legend><h2>Recherche</h2></legend>
+        <input id="rechercher" type="text" placeholder="Entrer un code / nom" />
         <div>
-          <input
-            id="chercherIngredient"
-            type="text"
-            placeholder="Entrer un code (I0000) ou un nom"
-          />
+          <button id="boutonRechercher">Rechercher</button>
         </div>
-        <button id="confirmerRechercheIngredient" class="button">
-          Rechercher
-        </button>
-        <!--<button class="button" id="addIngredient">Ajout</button>-->
       </fieldset>
 
       <fieldset>
         <legend><h2>Affichage des ingrédients</h2></legend>
+        <div id="affichageElement"></div>
       </fieldset>
     </div>
 
-    <div class="row">
-      <fieldset>
-        <legend><h2>NOM DE L'INGREDIENT</h2></legend>
-        <center>
-          Identifiant de l'ingrédient :
-          <div name="idIngredient">AFFICHER ID INGREDIENT</div>
-        </center>
-        <table>
-          <tr>
-            <td>
-              <label for="nomIngredient">Nom</label>
-              <input id="nomIngredient" placeholder="nom" />
-            </td>
-            <td>
-              <label for="type">Type</label>
-              <select id="type"></select>
-            </td>
-            <td>
-              <label for="tva">Valeur de TVA</label>
-              <select id="tva"></select>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="prixU">Prix unitaire</label>
-              <input type="number" id="prixU" />
-            </td>
-            <td>
-              <label for="unite">Unite</label>
-              <select id="unite"></select>
-            </td>
-            <td>
-              <label for="allergene">Allergène ?</label>
-              <input type="checkbox" id="allergene" />
-            </td>
-          </tr>
-        </table>
-        <div class="row">
-          <button id="supressIngredient">Suppression</button>
-          <button id="supressIngredient">Ajouter / Enregistrer</button>
+    <div class="zoneAffichage">
+      <fieldset id="formulaireIngredient">
+        <legend>
+          <h2>
+            Ingredient
+            <input type="number" id="idIngredient" readonly />
+          </h2>
+        </legend>
+        <div class="informations">
+          <div class="information">
+            <label for="nomIngredient">Nom</label>
+            <input id="nomIngredient" placeholder="nom de l'ingredient" />
+          </div>
+          <div class="information">
+            <label for="type">Type</label>
+            <select id="type"></select>
+          </div>
+          <div class="information">
+            <label for="tva">Valeur de TVA</label>
+            <select id="tva"></select>
+          </div>
+          <div class="information">
+            <label for="prixU">Prix unitaire</label>
+            <input
+              type="number"
+              id="prixU"
+              max="1000"
+              placeholder="0"
+              min="0"
+            />
+          </div>
+          <div class="information">
+            <label for="unite">Unite</label>
+            <select id="unite"></select>
+          </div>
+          <div class="information">
+            <label for="allergene">Allergène ?</label>
+            <input type="checkbox" id="allergene" />
+          </div>
+        </div>
+
+        <div class="action">
+          <button id="boutonSupprimerIngredient">Suppression</button>
+          <button id="boutonMAJIngredient">Ajouter / Enregistrer</button>
         </div>
       </fieldset>
     </div>

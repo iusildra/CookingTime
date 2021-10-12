@@ -5,46 +5,62 @@
     <link rel="stylesheet" href="../css/style.css" />
   </head>
   <body>
-    <header class="header-banner">
-      <div data-gjs="navbar" class="navbar">
-        <nav data-gjs="navbar-menu" class="navbar-menu">
-          <a href="../index.html" class="navbar-menu-link">Accueil</a>
-          <a href="ingredients.html" class="navbar-menu-link">Ingrédients</a>
-          <a href="stock.html" class="navbar-menu-link">Stock</a>
-          <a href="#" class="navbar-menu-link">Suivi</a>
+    <header>
+      <div data-gjs="navbar">
+        <nav data-gjs="navbar-menu">
+          <a href="../index.html">Accueil</a>
+          <a href="ingredients.html">Ingrédients</a>
+          <a href="stock.html">Stock</a>
+          <a href="#">Suivi</a>
         </nav>
       </div>
     </header>
 
     <h1>Suivi d'activité</h1>
 
-    <div class="affichage">
-      <fieldset name="RechercherSuivi">
-        <legend><h2>Rechercher</h2></legend>
-        <div id="listeFicheRecapitulative">
-          AFFICHER EN LISTE <br />
-          LES FICHES RECAPITULATIVES<br />
-          ON DOIT POUVOIR LES SELECTIONNER<br />
-          POUR LES AFFICHER
+    <div class="zoneRecherche">
+      <fieldset>
+        <legend><h2>Recherche</h2></legend>
+        <div>
+          <label for="rechercherMois">Mois</label>
+          <input
+            id="rechercherMois"
+            type="number"
+            placeholder="00"
+            min="0"
+            max="12"
+          />
+          <label for="rechercherAnnee">Année</label>
+          <input
+            id="rechercherAnnee"
+            type="number"
+            placeholder="00"
+            min="2000"
+            max="9999"
+          />
         </div>
+        <button id="boutonRechercher" class="button">Rechercher</button>
       </fieldset>
 
-      <fieldset name="AffichageListeSuivi">
+      <fieldset>
+        <legend><h2>Affichage des fiches de suivi</h2></legend>
+        <div id="afficherElement"></div>
+      </fieldset>
+
+      <fieldset>
         <legend><h2>Affichage de la fiche récapitulative</h2></legend>
-        <div id="listeFicheRecapitulative">
-          <table>
-            <tr>
-              <th>Titre</th>
-              <th>Quantité</th>
-              <th>Date</th>
-            </tr>
-            <tr>
-              <td>Titre1</td>
-              <td>Quantité1</td>
-              <td>Date1</td>
-            </tr>
-          </table>
-        </div>
+        <table>
+          <tr>
+            <th>Titre</th>
+            <th>Quantité</th>
+            <th>Date</th>
+          </tr>
+          <tr>
+            <td>Titre1</td>
+            <td>Quantité1</td>
+            <td>Date1</td>
+          </tr>
+        </table>
 
         <div id="actionSuivi">
           <button id="impressionSuivi">Impression</button>
