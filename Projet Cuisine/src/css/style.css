@@ -1,3 +1,19 @@
+/* HEADER */
+a
+{
+  text-decoration:none;
+  color: #222222;
+}
+.main-head {
+  color: black;
+  justify-content: space-around;
+}
+
+nav{
+  min-height: 10vh;
+
+}
+
 .zoneRecherche,
 .zoneAffichage {
   display: flex;
