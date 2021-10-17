@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <header>
+      <div data-gjs="navbar">
+        <nav data-gjs="navbar-menu">
+          <a href="../index.html">Accueil</a>
+          <a href="ingredients.html">Ingrédients</a>
+          <a href="#">Stock</a>
+          <a href="suivi.html">Suivi</a>
+        </nav>
+      </div>
+    </header>
+
+    <h1>Gestion de ma cuisine</h1>
+
+    <div class="zoneRecherche">
+      <fieldset>
+        <legend><h2>Gérer mon stock</h2></legend>
+
+        <div id="chercherStock" class="stockeQte">
+          <input id="rechercher" type="text" placeholder="Ingredient" />
+          <button id="boutonRechercher">Rechercher</button>
+
+          <div class="stockQte">
+            <label for="ajouterStock">Ajouter</label>
+            <input
+              id="ajouterStock"
+              type="number"
+              value="0"
+              min="0"
+              max="1000"
+            />
+            <button id="boutonAjouterStock" class="button">Ajout</button>
+          </div>
+          <div class="stockQte">
+            <label for="supprimerStock">Supprimer</label>
+            <input
+              id="supprimerStock"
+              type="number"
+              value="0"
+              min="0"
+              max="1000"
+            />
+            <button id="boutonSupprimerStock" class="button">
+              Suppression
+            </button>
+          </div>
+        </div>
+
+        <button id="visualiserStock" class="button">
+          Visualiser mon stock
+        </button>
+      </fieldset>
+
+      <fieldset>
+        <legend><h2>Affichage des fiches de suivi</h2></legend>
+        <div id="affichageElement"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend><h2>Gestion des coûts</h2></legend>
+        <table id="couts">
+          <tr>
+            <td>
+              <label for="coutHoraire">Rémunération horaire</label>
+              <input
+                id="coutHoraire"
+                type="number"
+                placeholder="0"
+                min="0"
+                max="1000"
+              />
+            </td>
+            <td>
+              <label for="coutFluide">Cout fluide</label>
+              <input id="coutFluide" type="number" placeholder="0" min="0" />
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="perteMatiere">Perte matière (%)</label>
+              <input
+                id="perteMatiere"
+                type="number"
+                placeholder="0"
+                min="0"
+                max="100"
+              />
+            </td>
+            <td>
+              <label for="fraisFixe">Frais fixe</label>
+              <input id="fraisFixe" type="number" placeholder="0" min="0" />
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </div>
+  </body>
+</html>
