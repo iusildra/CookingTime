@@ -1,5 +1,6 @@
 const html= document.getElementsByTagName("html");
 const type= html.item(0).id;
+console.log(type);
 document.body.onload= requeteAJAXaffichage(type);
 
 
@@ -88,7 +89,6 @@ function requeteAJAXAdd (objet, tabValeur) {
 
 // Requete de selection d'un objet, permet l'affichage d'une petite fenetre quand on clique sur l'un des éléments des 3 listes
 function requeteAJAXSelection (objet,valeur){
-    console.log(valeur);
     let url = "php/requetesSelection.php";
     let requete = new XMLHttpRequest();
     requete.open("POST",url,true);
