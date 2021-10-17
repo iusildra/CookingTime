@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 /* HEADER */
 a
 {
@@ -65,3 +66,83 @@ td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+=======
+/*.row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 10px;
+  width: 100%;
+}
+
+.column {
+  float: left;
+  display: flex;
+  flex-basis: auto;
+  min-height: 75px;
+}*/
+
+.affichage {
+  display: flex;
+  float: left;
+  width: 100%;
+  padding: 10px;
+}
+
+.colDescription1 {
+  float: left;
+  width: 400px;
+  min-height: 75px;
+  border-right: 1px solid black;
+  padding: 10px;
+}
+
+.colDescription2 {
+  float: left;
+  width: auto;
+  min-height: 75px;
+  border-right: 1px solid black;
+  padding: 10px;
+}
+
+.etape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  padding: 10px;
+  border: 2px dotted black;
+}
+
+.effacerEtape {
+  float: right;
+  width: 100px;
+}
+
+.stockQte {
+  margin: 20px 0px 20px 0px;
+}
+
+.actionSuivi {
+  padding: 10px;
+}
+
+button {
+  margin:auto;
+}
+
+table,
+th,
+td {
+  padding: 5px;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+#descriptionFiche {
+  padding: 20px;
+  border-bottom: 2px solid black;
+}
+
+>>>>>>> Stashed changes

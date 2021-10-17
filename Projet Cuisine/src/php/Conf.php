@@ -4,7 +4,7 @@ class Conf {
 
     private static $database = array(
         'hostname' => 'localhost',
-        'database' => 'dossantosm',
+        'database' => 'dossantosmcuisine',
         'login'    => 'root',
         'password' => 'root'
     );
@@ -24,6 +24,7 @@ class Conf {
     static public function getPassword() {
         return self::$database['password'];
     }
+
 }
 
 ?>
