@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 /* HEADER */
 a
 {
@@ -10,34 +9,6 @@ a
   justify-content: space-around;
 }
 
-nav{
-  min-height: 10vh;
-
-}
-
-.zoneRecherche,
-.zoneAffichage {
-  display: flex;
-}
-
-.informations {
-  max-width: 600px;
-  padding: 20px;
-  display: flex;
-  justify-content: space-around;
-  align-content: flex-start;
-  flex-wrap: wrap;
-}
-
-.information {
-  margin: 10px;
-  font-weight: 100;
-  overflow: hidden;
-  text-align: center;
-  border: 1px dotted black;
-  padding: 10px;
-}
-
 .etape {
   padding: 10px;
   border: 2px dotted black;
@@ -47,17 +18,11 @@ nav{
   margin: 20px 0px 20px 0px;
 }
 
-.descriptif {
-  display: flex;
-}
 
 .action {
   margin-top: 20px;
 }
 
-button {
-  margin-right: 10px;
-}
 
 table,
 th,
@@ -66,78 +31,22 @@ td {
   border: 1px solid black;
   border-collapse: collapse;
 }
-=======
-/*.row {
+
+#contenu,#contenuFiche {
   display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: flex-start;
+}
+
+button{
   padding: 10px;
-  width: 100%;
+  margin: 10px;
 }
 
-.column {
-  float: left;
-  display: flex;
-  flex-basis: auto;
-  min-height: 75px;
-}*/
-
-.affichage {
-  display: flex;
-  float: left;
-  width: 100%;
-  padding: 10px;
+input{
+  padding: 5px 5px;
 }
 
-.colDescription1 {
-  float: left;
-  width: 400px;
-  min-height: 75px;
-  border-right: 1px solid black;
-  padding: 10px;
-}
-
-.colDescription2 {
-  float: left;
-  width: auto;
-  min-height: 75px;
-  border-right: 1px solid black;
-  padding: 10px;
-}
-
-.etape {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: flex-start;
-  padding: 10px;
-  border: 2px dotted black;
-}
-
-.effacerEtape {
-  float: right;
-  width: 100px;
-}
-
-.stockQte {
-  margin: 20px 0px 20px 0px;
-}
-
-.actionSuivi {
-  padding: 10px;
-}
-
-button {
-  margin:auto;
-}
-
-table,
-th,
-td {
-  padding: 5px;
-  border: 1px solid black;
-  border-collapse: collapse;
+fieldset{
+  text-align: center;
 }
 
 #descriptionFiche {
@@ -145,4 +54,3 @@ td {
   border-bottom: 2px solid black;
 }
 
->>>>>>> Stashed changes

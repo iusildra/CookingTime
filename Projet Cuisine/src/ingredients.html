@@ -19,68 +19,70 @@
     </header>
 
     <h1>Ingrédients</h1>
+    <div id="contenu">
+      <div>
+        <fieldset>
+          <legend><h2>Recherche</h2></legend>
+          <div>
+            <input id="rechercher" type="text" placeholder="Entrer un code / nom" />
+            <button id="boutonRechercher">Rechercher</button>
+          </div>
+          <button id="boutonListe">Afficher la liste des ingrédients</button>
+        </fieldset>
+      </div>
+      <div>
+        <fieldset>
+          <legend><h2>Affichage des ingrédients</h2></legend>
+          <div id="listeElement"></div>
+        </fieldset>
+      </div>
+      <div>
+        <fieldset id="formulaireIngredient">
+          <legend>
+            <h2>
+              Ingredient
+              <input type="number" id="idIngredient" readonly />
+            </h2>
+          </legend>
+          <div class="informations">
+            <div class="information">
+              <label for="nomIngredient">Nom</label>
+              <input id="nomIngredient" placeholder="nom de l'ingredient" />
+            </div>
+            <div class="information">
+              <label for="type">Type</label>
+              <select id="type"></select>
+            </div>
+            <div class="information">
+              <label for="tva">Valeur de TVA</label>
+              <select id="tva"></select>
+            </div>
+            <div class="information">
+              <label for="prixU">Prix unitaire</label>
+              <input
+                type="number"
+                id="prixU"
+                max="1000"
+                placeholder="0"
+                min="0"
+              />
+            </div>
+            <div class="information">
+              <label for="unite">Unite</label>
+              <select id="unite"></select>
+            </div>
+            <div class="information">
+              <label for="allergene">Allergène ?</label>
+              <input type="checkbox" id="allergene" />
+            </div>
+          </div>
 
-    <div class="zoneRecherche">
-      <fieldset>
-        <legend><h2>Recherche</h2></legend>
-        <input id="rechercher" type="text" placeholder="Entrer un code / nom" />
-        <div>
-          <button id="boutonRechercher">Rechercher</button>
-        </div>
-      </fieldset>
-
-      <fieldset>
-        <legend><h2>Affichage des ingrédients</h2></legend>
-        <div id="listeElement"></div>
-      </fieldset>
-    </div>
-
-    <div class="zoneAffichage">
-      <fieldset id="formulaireIngredient">
-        <legend>
-          <h2>
-            Ingredient
-            <input type="number" id="idIngredient" readonly />
-          </h2>
-        </legend>
-        <div class="informations">
-          <div class="information">
-            <label for="nomIngredient">Nom</label>
-            <input id="nomIngredient" placeholder="nom de l'ingredient" />
+          <div class="action">
+            <button id="boutonSupprimerIngredient">Suppression</button>
+            <button id="boutonMAJIngredient">Ajouter / Enregistrer</button>
           </div>
-          <div class="information">
-            <label for="type">Type</label>
-            <select id="type"></select>
-          </div>
-          <div class="information">
-            <label for="tva">Valeur de TVA</label>
-            <select id="tva"></select>
-          </div>
-          <div class="information">
-            <label for="prixU">Prix unitaire</label>
-            <input
-              type="number"
-              id="prixU"
-              max="1000"
-              placeholder="0"
-              min="0"
-            />
-          </div>
-          <div class="information">
-            <label for="unite">Unite</label>
-            <select id="unite"></select>
-          </div>
-          <div class="information">
-            <label for="allergene">Allergène ?</label>
-            <input type="checkbox" id="allergene" />
-          </div>
-        </div>
-
-        <div class="action">
-          <button id="boutonSupprimerIngredient">Suppression</button>
-          <button id="boutonMAJIngredient">Ajouter / Enregistrer</button>
-        </div>
-      </fieldset>
+        </fieldset>
+      </div>
     </div>
   </body>
 </html>

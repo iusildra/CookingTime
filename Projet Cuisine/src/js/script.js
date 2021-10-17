@@ -1,7 +1,7 @@
 const html= document.getElementsByTagName("html");
 const type= html.item(0).id;
 console.log(type);
-document.body.onload= requeteAJAXaffichage(type);
+//document.body.onload= requeteAJAXaffichage(type);
 
 
 // Requete d'affichage, elle permet de récupérer les données d'affochage dans la BD et de lancer la callback afficherObjets ( décrite plus bas)
@@ -114,3 +114,12 @@ function requeteAJAXSuppression(objet, tabValeur){
 
     requete.send(para);
 }
+
+const boutonListe= document.getElementById("boutonListe");
+boutonListe.addEventListener("click", function (){
+    requeteAJAXaffichage(type);
+});
+
+
+
+

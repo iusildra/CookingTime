@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <header>
@@ -18,7 +18,8 @@
 
     <h1>Gestion de ma cuisine</h1>
 
-    <div class="zoneRecherche">
+    <div id="contenu">
+      <div>
       <fieldset>
         <legend><h2>Gérer mon stock</h2></legend>
 
@@ -28,13 +29,7 @@
 
           <div class="stockQte">
             <label for="ajouterStock">Ajouter</label>
-            <input
-              id="ajouterStock"
-              type="number"
-              value="0"
-              min="0"
-              max="1000"
-            />
+            <input id="ajouterStock" type="number" value="0" min="0" max="1000"/>
             <button id="boutonAjouterStock" class="button">Ajout</button>
           </div>
           <div class="stockQte">
@@ -56,25 +51,21 @@
           Visualiser mon stock
         </button>
       </fieldset>
-
+        </div>
+      <div>
       <fieldset>
         <legend><h2>Affichage des fiches de suivi</h2></legend>
         <div id="affichageElement"></div>
       </fieldset>
-
+      </div>
+      <div>
       <fieldset>
         <legend><h2>Gestion des coûts</h2></legend>
         <table id="couts">
           <tr>
             <td>
               <label for="coutHoraire">Rémunération horaire</label>
-              <input
-                id="coutHoraire"
-                type="number"
-                placeholder="0"
-                min="0"
-                max="1000"
-              />
+              <input id="coutHoraire" type="number" placeholder="0" min="0" max="1000"/>
             </td>
             <td>
               <label for="coutFluide">Cout fluide</label>
@@ -84,13 +75,7 @@
           <tr>
             <td>
               <label for="perteMatiere">Perte matière (%)</label>
-              <input
-                id="perteMatiere"
-                type="number"
-                placeholder="0"
-                min="0"
-                max="100"
-              />
+              <input id="perteMatiere" type="number" placeholder="0" min="0" max="100"/>
             </td>
             <td>
               <label for="fraisFixe">Frais fixe</label>
@@ -99,6 +84,7 @@
           </tr>
         </table>
       </fieldset>
+      </div>
     </div>
   </body>
 </html>

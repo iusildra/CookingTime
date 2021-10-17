@@ -6,7 +6,7 @@ class Conf {
         'hostname' => 'localhost',
         'database' => 'dossantosmcuisine',
         'login'    => 'root',
-        'password' => 'root'
+        'password' => ''
     );
 
     static public function getLogin() {
