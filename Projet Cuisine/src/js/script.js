@@ -4,6 +4,9 @@ console.log(type);
 //document.body.onload= requeteAJAXaffichage(type);
 
 
+
+
+
 // Requete d'affichage, elle permet de récupérer les données d'affochage dans la BD et de lancer la callback afficherObjets ( décrite plus bas)
 function requeteAJAXaffichage(nom) {
     let url = "php/requetesAffichage.php";
@@ -19,6 +22,10 @@ function requeteAJAXaffichage(nom) {
 function viderListe(){
     let liste = document.getElementById("listeElement");
     liste.innerHTML = "";
+}
+
+function viderAffichage(){
+    let formulaire = document.getElementById("formulaire");
 }
 
 /*function afficherListe(req){
@@ -41,7 +48,15 @@ function viderListe(){
             break;
     }
 }*/
+function actualiserListe(){
+    let lignesTableau= document.querySelectorAll("#listeElement tr");
+    console.log(lignesTableau)
+    for (ligne of lignesTableau)
+        ligne.addEventListener("click", function () {
+            requeteAJAXSelection(type,event.target.parentNode.id);
 
+        });
+}
 function afficherListe(req) {
     viderListe();
     console.log(req);
@@ -70,6 +85,7 @@ function afficherListe(req) {
             tr.append(th);
         }
     }
+    actualiserListe();
 }
 
 // Requete d'ajout, elle permet d'ajouter un objet dans la BD ( et dans l'affichage ), elle prend un objet et un tableau de valeur
@@ -87,19 +103,38 @@ function requeteAJAXAdd (objet, tabValeur) {
     }
 }
 
-// Requete de selection d'un objet, permet l'affichage d'une petite fenetre quand on clique sur l'un des éléments des 3 listes
 function requeteAJAXSelection (objet,valeur){
     let url = "php/requetesSelection.php";
     let requete = new XMLHttpRequest();
     requete.open("POST",url,true);
     requete.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     requete.addEventListener("load",function () {
-        fenetreObjet(objet,requete,valeur);
+        fenetreObjet(objet,requete);
     });
     requete.send("objet=" + objet + "&id=" + valeur);
 }
 
-// Requete de suppression, prenant un  objet ( livre, adherent ...) et un tableau de valeur en parametre contenant les id a supprimer
+function fenetreObjet(objet,req){
+    console.log(req);
+    tab=JSON.parse(req.responseText);
+    tabAttributs=Object.keys(tab);
+    tabValeurs=Object.values(tab);
+    console.log(tabValeurs)
+    let i=0
+    for (attribut of tabAttributs) {
+        if(document.getElementById(attribut).type!=="checkbox")
+            document.getElementById(attribut).value = tabValeurs[i];
+        else
+            if(tabValeurs[i]==1) {
+                console.log("true");
+                document.getElementById(attribut).checked="true";
+            }
+            else {
+                document.getElementById(attribut).checked="false";
+            }
+            i++;
+    }
+}
 function requeteAJAXSuppression(objet, tabValeur){
     let url= "php/requetesSupression.php";
     let requete= new XMLHttpRequest();

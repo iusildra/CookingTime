@@ -36,7 +36,7 @@
           <div id="listeElement"></div>
         </fieldset>
       </div>
-      <div>
+      <div id="formulaire">
         <fieldset id="formulaireIngredient">
           <legend>
             <h2>
@@ -46,34 +46,28 @@
           </legend>
           <div class="informations">
             <div class="information">
-              <label for="nomIngredient">Nom</label>
-              <input id="nomIngredient" placeholder="nom de l'ingredient" />
+              <label for="nom">Nom</label>
+              <input id="nom" placeholder="nom de l'ingredient" />
             </div>
             <div class="information">
-              <label for="type">Type</label>
-              <input type="select"/>
+              <label for="typeIngredient">Type</label>
+              <input id="typeIngredient" type="select"/>
             </div>
             <div class="information">
-              <label for="tva">Valeur de TVA</label>
-              <input type="select"/>
+              <label for="typeTva">Valeur de TVA</label>
+              <input id="typeTva" type="select"/>
             </div>
             <div class="information">
               <label for="prixU">Prix unitaire</label>
-              <input
-                type="number"
-                id="prixU"
-                max="1000"
-                placeholder="0"
-                min="0"
-              />
+              <input type="number" id="prixU" max="1000" placeholder="0" min="0"/>
             </div>
             <div class="information">
               <label for="unite">Unite</label>
-              <input type="select"/>
+              <input id="unite" type="select"/>
             </div>
             <div class="information">
               <label for="allergene">Allergène ?</label>
-              <input type="checkbox" id="allergene" />
+              <input type="checkbox" id="allergene"/>
             </div>
           </div>
 

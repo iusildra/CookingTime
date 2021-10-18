@@ -50,11 +50,12 @@ function selectionFiche($valeur){
 }
 
 function selectionIngredient($valeur){
-    $sql = "SELECT * *
-            FROM ingredient I 
-            WHERE I.idIngredient=:val";
+    $valint= intval($valeur);
+    $sql = "SELECT * 
+            FROM ingredient  
+            WHERE idIngredient=:val";
     $req = Model::$pdo->prepare($sql);
-    $tab = array("val" => $valeur);
+    $tab = array("val" => $valint);
     $req->execute($tab);
     $req->setFetchMode(PDO::FETCH_OBJ);
     $val = $req->fetch();
