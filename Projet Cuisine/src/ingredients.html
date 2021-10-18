@@ -28,6 +28,7 @@
             <button id="boutonRechercher">Rechercher</button>
           </div>
           <button id="boutonListe">Afficher la liste des ingrédients</button>
+          <button id="boutonAjouterElement">Ajouter un ingrédient</button>
         </fieldset>
       </div>
       <div>
@@ -36,36 +37,35 @@
           <div id="listeElement"></div>
         </fieldset>
       </div>
-      <div id="formulaire">
+      <div id="affichageElement">
         <fieldset id="formulaireIngredient">
-          <legend>
-            <h2>
-              Ingredient
+          <legend> <h2> Ingredient</h2></legend>
+          <div>
+            <div>
+              <label for="idIngredient"> Idenfiant de l'ingrédient</label>
               <input type="number" id="idIngredient" readonly />
-            </h2>
-          </legend>
-          <div class="informations">
-            <div class="information">
+            </div>
+            <div>
               <label for="nom">Nom</label>
               <input id="nom" placeholder="nom de l'ingredient" />
             </div>
-            <div class="information">
+            <div>
               <label for="typeIngredient">Type</label>
               <input id="typeIngredient" type="select"/>
             </div>
-            <div class="information">
+            <div>
               <label for="typeTva">Valeur de TVA</label>
               <input id="typeTva" type="select"/>
             </div>
-            <div class="information">
+            <div>
               <label for="prixU">Prix unitaire</label>
               <input type="number" id="prixU" max="1000" placeholder="0" min="0"/>
             </div>
-            <div class="information">
+            <div>
               <label for="unite">Unite</label>
               <input id="unite" type="select"/>
             </div>
-            <div class="information">
+            <div>
               <label for="allergene">Allergène ?</label>
               <input type="checkbox" id="allergene"/>
             </div>

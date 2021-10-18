@@ -1,8 +1,17 @@
 const html= document.getElementsByTagName("html");
 const type= html.item(0).id;
-console.log(type);
+const boutonListe= document.getElementById("boutonListe");
+const boutonAjouterElement= document.getElementById("boutonAjouterElement");
 //document.body.onload= requeteAJAXaffichage(type);
 
+
+boutonListe.addEventListener("click", function (){
+    requeteAJAXaffichage(type);
+});
+
+boutonAjouterElement.addEventListener("click",function () {
+    viderAffichage();
+});
 
 
 
@@ -150,10 +159,19 @@ function requeteAJAXSuppression(objet, tabValeur){
     requete.send(para);
 }
 
-const boutonListe= document.getElementById("boutonListe");
-boutonListe.addEventListener("click", function (){
-    requeteAJAXaffichage(type);
-});
+function viderAffichage(){
+    let tab = document.querySelectorAll("#affichageElement input");
+    for (input of tab){
+        if (input.type != "checkbox"){
+            input.value = "";
+        }
+        else{
+            input.checked = "";
+        }
+    }
+}
+
+
 
 
 
