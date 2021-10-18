@@ -58,7 +58,7 @@ function selectionIngredient($valeur){
     $tab = array("val" => $valint);
     $req->execute($tab);
     $req->setFetchMode(PDO::FETCH_OBJ);
-    $val = $req->fetch();
+    $val = $req->fetchAll();
     return $val;
 }
 
@@ -70,7 +70,7 @@ function selectionSuivi($valeur){
     $tab = array("val"=>$valeur);
     $req->execute($tab);
     $req->setFetchMode(PDO::FETCH_OBJ);
-    $val = $req->fetch();
+    $val = $req->fetchAll();
     return $val;
 }
 

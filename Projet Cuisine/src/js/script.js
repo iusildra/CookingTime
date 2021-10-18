@@ -58,14 +58,15 @@ function viderAffichage(){
     }
 }*/
 function actualiserListe(){
-    let lignesTableau= document.querySelectorAll("#listeElement tr");
+    let lignesTableau= document.querySelectorAll("#listeElement tr:not(:first-child)");
     console.log(lignesTableau)
     for (ligne of lignesTableau)
         ligne.addEventListener("click", function () {
+            console.log(event.target);
             requeteAJAXSelection(type,event.target.parentNode.id);
-
         });
 }
+
 function afficherListe(req) {
     viderListe();
     console.log(req);
@@ -124,22 +125,21 @@ function requeteAJAXSelection (objet,valeur){
 }
 
 function fenetreObjet(objet,req){
-    console.log(req);
     tab=JSON.parse(req.responseText);
-    tabAttributs=Object.keys(tab);
-    tabValeurs=Object.values(tab);
-    console.log(tabValeurs)
+    tabAttributs=Object.keys(tab[0]);
+    tabValeurs=Object.values(tab[0]);
     let i=0
     for (attribut of tabAttributs) {
-        if(document.getElementById(attribut).type!=="checkbox")
+        if(document.getElementById(attribut).type!=="checkbox") {
             document.getElementById(attribut).value = tabValeurs[i];
+        }
         else
             if(tabValeurs[i]==1) {
-                console.log("true");
                 document.getElementById(attribut).checked="true";
             }
             else {
-                document.getElementById(attribut).checked="false";
+                console.log(tabValeurs[i]);
+                document.getElementById(attribut).checked="";
             }
             i++;
     }
