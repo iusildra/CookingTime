@@ -130,6 +130,7 @@ function fenetreObjet(objet,req){
     tabValeurs=Object.values(tab[0]);
     let i=0
     for (attribut of tabAttributs) {
+        console.log(attribut);
         if(document.getElementById(attribut).type!=="checkbox") {
             document.getElementById(attribut).value = tabValeurs[i];
         }
