@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <link rel="stylesheet" href="css/style.css" />
     <script type="text/javascript" src="js/script.js" defer></script>
+    <script type="text/javascript" src="js/scriptFiche.js" defer></script>
   </head>
   <body>
   <header class = "main-head">
@@ -69,27 +70,9 @@
         <div id="contenuFiche">
           <div class="descriptif">
             <fieldset id="Descriptif">
-              <legend><h3>Descriptif</h3></legend>
-              <div id="etapesRecette">
-                <div class="etape" id="e0">
-                  <div>
-                    <label for="idPhase">N° d'étape</label><br />
-                    <input type="number" id="idPhase" placeholder="0" /><br />
-                    <label for="dureePhase">Durée</label><br />
-                    <input type="number" id="dureePhase" placeholder="0" /><br />
-                    <label for="textEtape">Description</label><br />
-                    <textarea
-                            class="descriptionFT"
-                            id="textEtape"
-                            rows="10"
-                            cols="45"
-                    ></textarea>
-                  </div>
-                  <div class="action">
-                    <button id="boutonSupprimerEtape">Supprimer l'étape</button>
-                    <button id="boutonMonterEtape">Up</button>
-                    <button id="boutonDescendreEtape">Down</button>
-                  </div>
+              <legend><h3>Etapes</h3></legend>
+              <div>
+                <div id="etapesRecette" class="elementsRecette">
                 </div>
                 <button id="boutonAjouterEtape">+</button>
               </div>
@@ -110,7 +93,7 @@
                   <td>
                     <input type="number" name="ingredientQte_0" placeholder="0" />
                   </td>
-                  <td><button id="0">X</button></td>
+                  <td><button>X</button></td>
                 </tr>
               </table>
               <button id="ajoutIngredientListe">+</button>

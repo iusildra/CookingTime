@@ -2,7 +2,11 @@ const html= document.getElementsByTagName("html");
 const type= html.item(0).id;
 const boutonListe= document.getElementById("boutonListe");
 const boutonAjouterElement= document.getElementById("boutonAjouterElement");
+
+// Pour fiche :
+
 //document.body.onload= requeteAJAXaffichage(type);
+
 
 
 boutonListe.addEventListener("click", function (){
@@ -16,7 +20,7 @@ boutonAjouterElement.addEventListener("click",function () {
 
 
 
-// Requete d'affichage, elle permet de récupérer les données d'affochage dans la BD et de lancer la callback afficherObjets ( décrite plus bas)
+// Requete d'affichage, elle permet de récupérer les données d'affochage dans la BD et de les afficher
 function requeteAJAXaffichage(nom) {
     let url = "php/requetesAffichage.php";
     let requete = new XMLHttpRequest();
@@ -34,8 +38,20 @@ function viderListe(){
 }
 
 function viderAffichage(){
-    let formulaire = document.getElementById("formulaire");
+    let tab = document.querySelectorAll("#affichageElement input");
+    for (input of tab){
+        if (input.type != "checkbox"){
+            input.value = "";
+        }
+        else{
+            input.checked = "";
+        }
+    }
+    if(type==="Fiche"){
+        viderRecette();
+    }
 }
+
 
 /*function afficherListe(req){
     viderListe();
@@ -59,23 +75,22 @@ function viderAffichage(){
 }*/
 function actualiserListe(){
     let lignesTableau= document.querySelectorAll("#listeElement tr:not(:first-child)");
-    console.log(lignesTableau)
     for (ligne of lignesTableau)
         ligne.addEventListener("click", function () {
-            console.log(event.target);
             requeteAJAXSelection(type,event.target.parentNode.id);
         });
 }
 
 function afficherListe(req) {
     viderListe();
-    console.log(req);
     tab=JSON.parse(req.responseText);
-    console.log(tab);
     let liste = document.getElementById("listeElement");
+    let a= document.createElement("a");
+    a.href="#affichageElement";
     let table = document.createElement("table");
     let trHead = document.createElement("tr");
-    liste.appendChild(table);
+    liste.append(a);
+    a.append(table)
     table.append(trHead);
     tabAttributs=Object.keys(tab[0]);
     for (let val of tabAttributs) {
@@ -86,7 +101,6 @@ function afficherListe(req) {
     for(let elt of tab) {
         let tr=document.createElement("tr");
         tabValeurs=Object.values(elt);
-        console.log(tabValeurs);
         tr.id=tabValeurs[0];
         table.append(tr);
         for (let val of tabValeurs) {
@@ -94,8 +108,10 @@ function afficherListe(req) {
             th.innerHTML= val;
             tr.append(th);
         }
+        tr.addEventListener("click", function () {
+            requeteAJAXSelection(type,event.target.parentNode.id);
+        });
     }
-    actualiserListe();
 }
 
 // Requete d'ajout, elle permet d'ajouter un objet dans la BD ( et dans l'affichage ), elle prend un objet et un tableau de valeur
@@ -119,32 +135,41 @@ function requeteAJAXSelection (objet,valeur){
     requete.open("POST",url,true);
     requete.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     requete.addEventListener("load",function () {
-        fenetreObjet(objet,requete);
+        if(objet==="Contenir")
+            remplirIngredients(requete);
+        else if(objet==="PeutContenir")
+            remplirSousRecettes(requete);
+        else
+            fenetreObjet(requete);
+        if(objet==="Fiche") {
+            requeteAJAXSelection("Contenir", valeur);
+            requeteAJAXSelection("PeutContenir", valeur);
+        }
     });
     requete.send("objet=" + objet + "&id=" + valeur);
 }
 
-function fenetreObjet(objet,req){
-    tab=JSON.parse(req.responseText);
-    tabAttributs=Object.keys(tab[0]);
-    tabValeurs=Object.values(tab[0]);
-    let i=0
+function fenetreObjet(req){
+    viderAffichage()
+    tab=JSON.parse(req.responseText)[0];
+    console.log(tab);
+    tabAttributs=Object.keys(tab);
+    if(type==="Fiche"){
+        remplirEtapes(tab["Etapes"]);
+        tabAttributs=tabAttributs.slice(0,7);
+    }
     for (attribut of tabAttributs) {
         console.log(attribut);
-        if(document.getElementById(attribut).type!=="checkbox") {
-            document.getElementById(attribut).value = tabValeurs[i];
+        if (document.getElementById(attribut).type !== "checkbox") {
+            document.getElementById(attribut).value = tab[attribut];
+        } else if (tab[attribut] == 1) {
+            document.getElementById(attribut).checked = "true";
+        } else {
+            document.getElementById(attribut).checked = "";
         }
-        else
-            if(tabValeurs[i]==1) {
-                document.getElementById(attribut).checked="true";
-            }
-            else {
-                console.log(tabValeurs[i]);
-                document.getElementById(attribut).checked="";
-            }
-            i++;
     }
 }
+
 function requeteAJAXSuppression(objet, tabValeur){
     let url= "php/requetesSupression.php";
     let requete= new XMLHttpRequest();
@@ -154,23 +179,10 @@ function requeteAJAXSuppression(objet, tabValeur){
         afficherListes();
     })
     let para="objet=" + objet + "&id=" + tabValeur[0];
-    if(objet === "Emprunt")
-        para += "&id1=" + tabValeur[1];
-
     requete.send(para);
 }
 
-function viderAffichage(){
-    let tab = document.querySelectorAll("#affichageElement input");
-    for (input of tab){
-        if (input.type != "checkbox"){
-            input.value = "";
-        }
-        else{
-            input.checked = "";
-        }
-    }
-}
+
 
 
 

@@ -38,7 +38,7 @@ function getObjets($objet) {
 }
 
 function selectionFiche($valeur){
-    $sql = 'SELECT *
+    $sql = 'SELECT *   
             FROM fiche F
             WHERE F.idFiche=:val';
     $req = Model::$pdo->prepare($sql);
@@ -74,6 +74,32 @@ function selectionSuivi($valeur){
     return $val;
 }
 
+function selectionContenir($valeur){
+    $sql= "SELECT I.nom,C.quantiteIngredient,C.unite
+            FROM contenir C 
+            join ingredient I on C.idIngredient=I.idIngredient
+            where C.idFiche=:val";
+    $req = Model::$pdo->prepare($sql);
+    $tab = array("val"=>$valeur);
+    $req->execute($tab);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $val = $req->fetchAll();
+    return $val;
+}
+
+function selectionPeutContenir($valeur){
+    $sql= "SELECT F.nom,P.quantiteSousRecette
+            FROM peutcontenir P 
+            join Fiche F on P.idFicheSousRecette=F.idFiche
+            where P.idFicheRecette=:val";
+    $req = Model::$pdo->prepare($sql);
+    $tab = array("val"=>$valeur);
+    $req->execute($tab);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $val = $req->fetchAll();
+    return $val;
+}
+
 
 function selectionObjet($objet, $valeur){
     switch ($objet){
@@ -83,6 +109,10 @@ function selectionObjet($objet, $valeur){
             return selectionIngredient($valeur);
         case "Suivi" :
             return selectionSuivi($valeur);
+        case "Contenir" :
+            return selectionContenir($valeur);
+        case "PeutContenir" :
+            return selectionPeutContenir($valeur);
     }
 }
 
