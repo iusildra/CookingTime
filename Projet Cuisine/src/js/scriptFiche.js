@@ -1,5 +1,6 @@
 const boutonAjouterEtape= document.getElementById("boutonAjouterEtape");
 const etapes= document.getElementById("etapesRecette");
+const ingredients = document.getElementById("ingredientsRecette")
 const elementsRecette= document.getElementsByClassName("elementsRecette");
 
 let nbEtape=0;
@@ -28,6 +29,38 @@ function ajouterEtape(contenu){
     etapes.append(div);
     actualiserBoutons(div);
 }
+
+function ajouterIngredient(nom="", qte=0) {
+    let tr = document.createElement("tr");
+    tr.innerHTML = "<td><input type='text' name='ingredient' value='"+nom+"'/></td>"+
+    "<td><input type='number' name='ingredientQte' value='"+qte+"'/></td>"+
+    "<td><button id='b0' class='suppression'>X</button></td>"
+
+}
+
+/*<tr id="i0" style="display: none;">
+                  <td>
+                    <input type="text" name="ingredient" placeholder="nom" />
+                  </td>
+                  <td>
+                    <input type="number" name="ingredientQte" placeholder="0" />
+                  </td>
+                  <td>
+                    <button id="b0" class="suppression">X</button>
+                  </td>
+                </tr>*/
+
+
+    /*<tr id="r0" style="display: none">
+                  <td>
+                    <input type="text" id="recette" placeholder="nom" />
+                  </td>
+                  <td>
+                    <input type="number" id="recetteQte" placeholder="0" />
+                  </td>
+                  <td><button id="b0" class="suppression">X</button></td>
+                </tr> */
+
 
 function supprimerEtape(etape){
     etapes.removeChild(etape);

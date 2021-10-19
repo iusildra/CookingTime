@@ -9,7 +9,7 @@
   <body>
   <header class = "main-head">
     <div data-gjs="navbar">
-      <nav data-gjs="navbar-menu">
+      <nav data-gjs="navbar-menu" class="navbar">
         <a href="#" id="accueilLink">Accueil</a>
         <a href="ingredients.html" id="ingredientLink">Ingrédients</a>
         <a href="stock.html" id="stockLink">Stock</a>
@@ -44,9 +44,9 @@
     </div>
   </div>
   <div class="zoneAffichage" id="affichageElement">
-      <fieldset id="formulaireFT">
+      <fieldset>
         <legend><h2>Fiche technique</h2> </legend>
-          <div id="descriptionFiche">
+          <div>
             <div>
               <label for="idFiche">ID de la fiche</label>
               <input id="idFiche" type="number" min="00" max="9999" readonly />
@@ -63,61 +63,55 @@
             <input type="number" id="nbCouvert" value="8" min="0" max="100" />
             <label for="typeFiche">Type</label>
             <input id="typeFiche" type="select"/>
-
           </div>
         <label for="ajouterIngredientFiche">Un oubli ?</label>
         <button id="ajouterIngredientFiche">Creation d'ingrédients</button>
         <div id="contenuFiche">
-          <div class="descriptif">
-            <fieldset id="Descriptif">
+          <div>
+            <fieldset>
               <legend><h3>Etapes</h3></legend>
-              <div>
-                <div id="etapesRecette" class="elementsRecette">
+              <div id="etapesRecette" class="elementsRecette">
+                <div id="etape1" class="etape">
+                  <div>
+                    <p>N° d'étape</p>
+                    <input class='id' type='number' value="1" readonly/>
+                    <p>Durée de l'étape (min)</p>
+                    <input type='number' id="dureePhase"/>
+                    <p>Description</p>
+                    <textarea class='descriptionEtape' rows='4' cols='45'></textarea>
+                  </div>
+                  <div>
+                    <button class='boutonSupprimerEtape'>Supprimer</button>
+                    <button class='boutonMonterEtape'>↑</button>
+                    <button class='boutonDescendreEtape'>↓</button>
+                  </div>
                 </div>
-                <button id="boutonAjouterEtape">+</button>
               </div>
+              <button id="boutonAjouterEtape">+</button>
             </fieldset>
           </div>
           <div>
             <fieldset>
-              <legend><h3>Ingredient</h3></legend>
-              <table id="listeIngredient">
-                <tr>
-                  <th>Ingredient</th>
-                  <th>Quantité</th>
-                </tr>
-                <tr id="i0">
-                  <td>
-                    <input type="text" name="ingredient_0" placeholder="nom" />
-                  </td>
-                  <td>
-                    <input type="number" name="ingredientQte_0" placeholder="0" />
-                  </td>
-                  <td><button>X</button></td>
-                </tr>
-              </table>
-              <button id="ajoutIngredientListe">+</button>
-              </fieldset>
+            <legend><h3>Ingredient</h3></legend>
+            <table id="ingredientsRecette">
+              <tr>
+                <th>Ingredient</th>
+                <th>Quantité</th>
+              </tr>
+            </table>
+            <button id="boutonAjouterIngredient">+</button>
+            </fieldset>
           </div>
           <div>
             <fieldset>
               <legend><h3>Sous-recettes</h3></legend>
-              <table id="listeSousRecette">
+              <table id="sousRecettesRecette">
                 <tr>
                   <th>Recette</th>
                   <th>Quantité</th>
                 </tr>
-                <tr id="r0">
-                  <td>
-                    <input type="text" id="recette" placeholder="nom" />
-                  </td>
-                  <td>
-                    <input type="number" id="recetteQte" placeholder="0" />
-                  </td>
-                  <td><button id="0">X</button></td>
-                </tr>
               </table>
-              <button id="ajoutRecetteListe">+</button>
+              <button id="boutonAjouterRecette">+</button>
             </fieldset>
           </div>
         </div>

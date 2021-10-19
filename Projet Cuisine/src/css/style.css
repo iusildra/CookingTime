@@ -1,9 +1,23 @@
 /* HEADER */
-a
+.navbar a
 {
-  text-decoration:none;
-  color: #222222;
+  margin: 0px 20px;
+  border: black solid 2px;
+  padding: 5px
 }
+
+a {
+  text-decoration:none;
+  color: #000
+}
+
+.navbar {
+  background-color: #aff;
+  min-height: 35px;
+  padding-top: 15px;
+  vertical-align: baseline;
+}
+
 .main-head {
   color: black;
   justify-content: space-around;
@@ -12,6 +26,10 @@ a
 .etape {
   padding: 10px;
   border: 2px dotted black;
+}
+
+.etape label {
+  display: block;
 }
 
 .stockQte {
@@ -48,9 +66,3 @@ input{
 fieldset{
   text-align: center;
 }
-
-#descriptionFiche {
-  padding: 20px;
-  border-bottom: 2px solid black;
-}
-
