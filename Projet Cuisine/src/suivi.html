@@ -3,18 +3,17 @@
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/header.css" />
     <script type="text/javascript" src="js/script.js" defer></script>
   </head>
   <body>
   <header>
     <div class="page">
-      <nav class="page__menu page__custom-settings menu">
-        <ul class="menu__list r-list">
-          <li class="menu__group"><a href="index.html" class="menu__link r-link text-underlined">Accueil</a></li>
-          <li class="menu__group"><a href="ingredients.html" class="menu__link r-link text-underlined">Ingrédient</a></li>
-          <li class="menu__group"><a href="suivi.html" class="menu__link r-link text-underlined">Suivi</a></li>
-          <li class="menu__group"><a href="stock.html" class="menu__link r-link text-underlined">Stock</a></li>
-        </ul>
+      <nav class="page__custom-settings">
+        <div class="menu__group"><a href="index.html" class="divMenu">Fiche technique</a></div>
+        <div class="menu__group"><a href="ingredients.html" id="ingredientLink" class="divMenu">Ingrédient</a></div>
+        <div class="menu__group"><a href="suivi.html" class="divMenu">Suivi</a></div>
+        <div class="menu__group"><a href="stock.html" id="stockLink" class="divMenu">Stock</a></div>
       </nav>
     </div>
   </header>

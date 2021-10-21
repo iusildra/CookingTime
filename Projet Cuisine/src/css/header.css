@@ -1,0 +1,66 @@
+.divMenu[href]{
+    color: var(--rLinkColor);
+}
+
+nav{
+    display: flex;
+    --rLinkColor: var(--menuLinkColor, currentColor);
+    background-color: var(--menuBackgroundColor, #f0f0f0);
+    box-shadow: var(--menuBoxShadow, 0 1px 3px 0 rgba(0, 0, 0, .12), 0 1px 2px 0 rgba(0, 0, 0, .24));
+}
+
+nav:hover .divMenu:not(:hover){
+    --rLinkColor: var(--menuLinkColorUnactive, rgba(22, 22, 22, .35));
+}
+
+.divMenu{
+    display: var(--menuLinkDisplay, block);
+    padding: var(--menuLinkPadding, 1.5rem 2.5rem);
+    font-weight: 700;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+    will-change: color;
+    transition: color .25s ease-out;
+}
+
+.page div {
+    text-align: center;
+    width: 25%;
+}
+
+.divMenu::before,
+.divMenu::after{
+    content: "";
+    width: 0;
+    height: 3px;
+    background-color: var(--textUnderlinedLineColor, currentColor);
+    will-change: width;
+    transition: width .1s ease-out;
+    position: absolute;
+    bottom: 0;
+}
+
+.divMenu:hover::before,
+.divMenu:hover::after{
+    width: 100%;
+    transition-duration: .2s;
+}
+.divMenu::before{
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.divMenu::after{
+    right: 50%;
+    transform: translateX(50%);
+}
+
+.page__custom-settings{
+    --menuBackgroundColor: #6d071a;
+    --menuLinkColor: #fff;
+    --menuLinkColorUnactive: #000000;
+    --menuLinkOutlineOffset: -.5rem;
+    --textUnderlinedLineColor: white;
+}
+
