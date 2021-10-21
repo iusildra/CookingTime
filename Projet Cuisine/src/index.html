@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="Fiche">
+<html lang="en" id="Fiche" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="css/style.css" />
@@ -7,20 +7,20 @@
     <script type="text/javascript" src="js/scriptFiche.js" defer></script>
   </head>
   <body>
-  <header class = "main-head">
+  <header>
     <div data-gjs="navbar">
       <nav data-gjs="navbar-menu" class="navbar">
-        <a href="#" id="accueilLink">Accueil</a>
-        <a href="ingredients.html" id="ingredientLink">Ingrédients</a>
-        <a href="stock.html" id="stockLink">Stock</a>
-        <a href="suivi.html">Suivi</a>
+        <div><h1><a href="#" id="accueilLink">Accueil</a></h1></div>
+        <div><h1><a href="ingredients.html" id="ingredientLink">Ingrédients</a></h1></div>
+        <div><h1><a href="suivi.html">Suivi</a></h1></div>
+        <div><h1><a href="stock.html" id="stockLink">Stock</a></h1></div>
       </nav>
     </div>
   </header>
 
   <h1>Fiches Techniques</h1>
 
-  <div id="contenu">
+  <div id="rechercherElement">
     <div>
       <fieldset>
         <legend><h2>Recherche</h2></legend>
@@ -37,24 +37,23 @@
       </fieldset>
     </div>
     <div>
-      <fieldset>
+      <fieldset hidden>
         <legend><h2>Liste des fiches techniques</h2></legend>
-        <div id="listeElement"></div>
+        <a href="#affichageElement"><table id="listeElement"></table></a>
       </fieldset>
     </div>
   </div>
-  <div class="zoneAffichage" id="affichageElement">
+  <div id="affichageElement">
       <fieldset>
         <legend><h2>Fiche technique</h2> </legend>
-          <div>
-            <div>
-              <label for="idFiche">ID de la fiche</label>
-              <input id="idFiche" type="number" min="00" max="9999" readonly />
-              <label for="idSuivi">ID du suivi</label>
-              <input id="idSuivi" type="select"/>
-            </div>
+        <div>
+          <div id="contenuFiche">
+            <label for="idFiche">ID de la fiche</label>
+            <input id="idFiche" type="number" min="00" max="9999" readonly />
             <label for="nom">Intitulé</label>
             <input type="text" id="nom" />
+          </div>
+          <div>
             <label for="responsable">Responsable</label>
             <input type="text" id="responsable" />
             <label for="auteur">Auteur</label>
@@ -62,12 +61,14 @@
             <label for="nbCouvert">Nombre de couvert</label>
             <input type="number" id="nbCouvert" value="8" min="0" max="100" />
             <label for="typeFiche">Type</label>
-            <input id="typeFiche" type="select"/>
+            <select id="typeFiche" class="typeFiche" class="baliseSelect"/>
+            </select>
           </div>
+        </div>
         <label for="ajouterIngredientFiche">Un oubli ?</label>
         <button id="ajouterIngredientFiche">Creation d'ingrédients</button>
-        <div id="contenuFiche">
-          <div>
+        <div id="contenuRecette">
+          <div class="colonneRecette">
             <fieldset>
               <legend><h3>Etapes</h3></legend>
               <div id="etapesRecette" class="elementsRecette">
@@ -76,7 +77,7 @@
                     <p>N° d'étape</p>
                     <input class='id' type='number' value="1" readonly/>
                     <p>Durée de l'étape (min)</p>
-                    <input type='number' id="dureePhase"/>
+                    <input type='number'/>
                     <p>Description</p>
                     <textarea class='descriptionEtape' rows='4' cols='45'></textarea>
                   </div>
@@ -90,28 +91,34 @@
               <button id="boutonAjouterEtape">+</button>
             </fieldset>
           </div>
-          <div>
+          <div class="colonneRecette">
             <fieldset>
             <legend><h3>Ingredient</h3></legend>
-            <table id="ingredientsRecette">
+            <table>
+              <thead>
               <tr>
                 <th>Ingredient</th>
                 <th>Quantité</th>
               </tr>
+              </thead>
+              <tbody id="ingredientsRecette" class="elementsRecette"></tbody>
             </table>
             <button id="boutonAjouterIngredient">+</button>
             </fieldset>
           </div>
-          <div>
+          <div class="colonneRecette">
             <fieldset>
               <legend><h3>Sous-recettes</h3></legend>
-              <table id="sousRecettesRecette">
-                <tr>
-                  <th>Recette</th>
-                  <th>Quantité</th>
-                </tr>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Recette</th>
+                    <th>Quantité</th>
+                  </tr>
+                </thead>
+                <tbody id="sousRecettesRecette" class="elementsRecette"></tbody>
               </table>
-              <button id="boutonAjouterRecette">+</button>
+              <button id="boutonAjouterSousRecette">+</button>
             </fieldset>
           </div>
         </div>

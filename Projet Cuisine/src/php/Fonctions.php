@@ -26,6 +26,38 @@ function getSuivis(){
     return $tab;
 }
 
+function getTypeFiche(){
+    $sql = "SELECT * FROM typefiche ";
+    $req = Model::$pdo->query($sql);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $tab = $req->fetchAll();
+    return $tab;
+}
+
+function getTypeIngredient(){
+    $sql = "SELECT * FROM typeingredient";
+    $req = Model::$pdo->query($sql);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $tab = $req->fetchAll();
+    return $tab;
+}
+
+function getTva(){
+    $sql = "SELECT typeTva FROM tva";
+    $req = Model::$pdo->query($sql);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $tab = $req->fetchAll();
+    return $tab;
+}
+
+function getUnite(){
+    $sql = "SELECT unite FROM unite";
+    $req = Model::$pdo->query($sql);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $tab = $req->fetchAll();
+    return $tab;
+}
+
 function getObjets($objet) {
     switch ($objet) {
         case "Fiche" :
@@ -34,6 +66,14 @@ function getObjets($objet) {
             return getIngredients();
         case "Suivi" :
             return getSuivis();
+        case "typeFiche" :
+            return getTypeFiche();
+        case "typeIngredient" :
+            return getTypeIngredient();
+        case "tva" :
+            return getTva();
+        case "unite" :
+            return getUnite();
     }
 }
 
@@ -42,8 +82,8 @@ function selectionFiche($valeur){
             FROM fiche F
             WHERE F.idFiche=:val';
     $req = Model::$pdo->prepare($sql);
-    $tab = array("val"=>$valeur);
-    $req->execute($tab);
+    $val = array("val"=>$valeur);
+    $req->execute($val);
     $req->setFetchMode(PDO::FETCH_OBJ);
     $tab = $req->fetchAll();
     return $tab;
@@ -55,11 +95,11 @@ function selectionIngredient($valeur){
             FROM ingredient  
             WHERE idIngredient=:val";
     $req = Model::$pdo->prepare($sql);
-    $tab = array("val" => $valint);
-    $req->execute($tab);
+    $val = array("val" => $valint);
+    $req->execute($val);
     $req->setFetchMode(PDO::FETCH_OBJ);
-    $val = $req->fetchAll();
-    return $val;
+    $tab = $req->fetchAll();
+    return $tab;
 }
 
 function selectionSuivi($valeur){
@@ -67,37 +107,37 @@ function selectionSuivi($valeur){
             FROM suivi S 
             where S.idSuivi=:val";
     $req = Model::$pdo->prepare($sql);
-    $tab = array("val"=>$valeur);
-    $req->execute($tab);
+    $val = array("val"=>$valeur);
+    $req->execute($val);
     $req->setFetchMode(PDO::FETCH_OBJ);
-    $val = $req->fetchAll();
-    return $val;
+    $tab = $req->fetchAll();
+    return $tab;
 }
 
 function selectionContenir($valeur){
-    $sql= "SELECT I.nom,C.quantiteIngredient,C.unite
+    $sql= "SELECT I.idIngredient,I.nom,C.quantiteIngredient,I.unite
             FROM contenir C 
             join ingredient I on C.idIngredient=I.idIngredient
             where C.idFiche=:val";
     $req = Model::$pdo->prepare($sql);
-    $tab = array("val"=>$valeur);
-    $req->execute($tab);
+    $val = array("val"=>$valeur);
+    $req->execute($val);
     $req->setFetchMode(PDO::FETCH_OBJ);
-    $val = $req->fetchAll();
-    return $val;
+    $tab = $req->fetchAll();
+    return $tab;
 }
 
 function selectionPeutContenir($valeur){
-    $sql= "SELECT F.nom,P.quantiteSousRecette
+    $sql= "SELECT F.idFiche,F.nom,P.quantiteSousRecette
             FROM peutcontenir P 
             join Fiche F on P.idFicheSousRecette=F.idFiche
             where P.idFicheRecette=:val";
     $req = Model::$pdo->prepare($sql);
-    $tab = array("val"=>$valeur);
-    $req->execute($tab);
+    $val = array("val"=>$valeur);
+    $req->execute($val);
     $req->setFetchMode(PDO::FETCH_OBJ);
-    $val = $req->fetchAll();
-    return $val;
+    $tab = $req->fetchAll();
+    return $tab;
 }
 
 
@@ -113,6 +153,29 @@ function selectionObjet($objet, $valeur){
             return selectionContenir($valeur);
         case "PeutContenir" :
             return selectionPeutContenir($valeur);
+    }
+}
+
+function selectionMultipleFiche($valeur){
+    $sql= "SELECT * 
+           FROM fiche 
+           WHERE idFiche like :chaine or nom like :chaine or auteur LIKE :chaine or responsable LIKE :chaine or typeFiche LIKE :chaine ";
+    $req = Model::$pdo->prepare($sql);
+    $val = array("chaine"=>$valeur + "%");
+    $req->execute($val);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $tab = $req->fetchAll();
+    return $tab;
+}
+
+function selectionMultiple($objet,$valeur){
+    switch ($objet){
+        case "Fiche" :
+            return selectionMultipleFiche($valeur);
+        case "Ingredient" :
+            return selectionMultipleIngredient($valeur);
+        case "Suivi" :
+            return selectionMultipleSuivi($valeur);
     }
 }
 

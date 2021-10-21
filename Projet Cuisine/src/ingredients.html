@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="Ingredient">
+<html lang="en" id="Ingredient" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
   <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="css/style.css" />
@@ -9,17 +9,17 @@
     <header>
       <div data-gjs="navbar">
         <nav data-gjs="navbar-menu" class="navbar">
-          <a href="index.html">Accueil</a>
-          <a href="#">Ingrédients</a>
-          <a href="stock.html">Stock</a>
-          <a href="suivi.html">Suivi</a>
+          <div><h1><a href="index.html" id="accueilLink">Accueil</a></h1></div>
+          <div><h1><a href="ingredients.html" id="ingredientLink">Ingrédients</a></h1></div>
+          <div><h1><a href="suivi.html">Suivi</a></h1></div>
+          <div><h1><a href="stock.html" id="stockLink">Stock</a></h1></div>
         </nav>
       </div>
       <div class="container-width"></div>
     </header>
 
     <h1>Ingrédients</h1>
-    <div id="contenu">
+    <div id="rechercherElement">
       <div>
         <fieldset>
           <legend><h2>Recherche</h2></legend>
@@ -36,9 +36,9 @@
         </fieldset>
       </div>
       <div>
-        <fieldset>
+        <fieldset hidden>
           <legend><h2>Affichage des ingrédients</h2></legend>
-          <div id="listeElement"></div>
+          <a href="#affichageElement"><table id="listeElement"></table></a>
         </fieldset>
       </div>
       <div id="affichageElement">
@@ -54,16 +54,26 @@
               <input id="nom" />
             </div>
             <div>
-              <label for="typeIngredient">Type</label>
-              <input id="typeIngredient" type="select"/>
-            </div>
-            <div>
-              <label for="typeTva">Type de TVA</label>
-              <input id="typeTva" type="select"/>
-            </div>
-            <div>
               <label for="prixU">Prix unitaire</label>
               <input type="number" id="prixU" min="0"/>
+            </div>
+            <div>
+              <label for="typeIngredient">Type</label>
+              <select id="typeIngredient" />
+              </select>
+            </div>
+            <div>
+              <label for="quantiteStock">Quantité en stock</label>
+              <input type="number" id="quantiteStock" min="0"/>
+            </div>
+            <div>
+              <label for="unite">Unité</label>
+              <select id="unite"/></select>
+            </div>
+            <div>
+              <label for="tva">Type de TVA</label>
+              <select id="tva" class="baliseSelect"/>
+              </select>
             </div>
             <div>
               <label for="allergene">Allergène ?</label>

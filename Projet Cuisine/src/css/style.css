@@ -1,9 +1,21 @@
 /* HEADER */
-.navbar a
+.navbar{
+  display: flex;
+  background-color: black;
+}
+
+.navbar div
 {
-  margin: 0px 20px;
-  border: black solid 2px;
-  padding: 5px
+  text-align: center;
+  width: 25%;
+}
+
+.navbar div a{
+  color: white;
+}
+
+html{
+  font-family: system-ui ;
 }
 
 a {
@@ -11,17 +23,7 @@ a {
   color: #000
 }
 
-.navbar {
-  background-color: #aff;
-  min-height: 35px;
-  padding-top: 15px;
-  vertical-align: baseline;
-}
 
-.main-head {
-  color: black;
-  justify-content: space-around;
-}
 
 .etape {
   padding: 10px;
@@ -50,8 +52,12 @@ td {
   border-collapse: collapse;
 }
 
-#contenu,#contenuFiche {
+#rechercherElement,#contenuRecette {
   display: flex;
+}
+
+.qteIngredient{
+  width: 40%;
 }
 
 button{
@@ -65,4 +71,12 @@ input{
 
 fieldset{
   text-align: center;
+}
+
+.colonneRecette{
+  width: 33.3%;
+}
+
+table{
+  width: 100%;
 }

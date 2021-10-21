@@ -9,16 +9,15 @@
     <header>
       <div data-gjs="navbar">
         <nav data-gjs="navbar-menu" class="navbar">
-          <a href="index.html">Accueil</a>
-          <a href="ingredients.html">Ingrédients</a>
-          <a href="stock.html">Stock</a>
-          <a href="#">Suivi</a>
+          <div><h1><a href="index.html" id="accueilLink">Accueil</a></h1></div>
+          <div><h1><a href="ingredients.html" id="ingredientLink">Ingrédients</a></h1></div>
+          <div><h1><a href="suivi.html">Suivi</a></h1></div>
+          <div><h1><a href="stock.html" id="stockLink">Stock</a></h1></div>
         </nav>
       </div>
     </header>
-
     <h1>Suivi d'activité</h1>
-    <div id="contenu">
+    <div id="rechercherElement">
       <div>
         <fieldset>
           <legend><h2>Recherche</h2></legend>
@@ -38,9 +37,9 @@
         </fieldset>
       </div>
       <div>
-        <fieldset>
+        <fieldset hidden>
           <legend><h2>Affichage des fiches de suivi</h2></legend>
-          <div id="listeElement"></div>
+          <a href="#affichageElement"><table id="listeElement"></table></a>
         </fieldset>
       </div>
 
@@ -54,7 +53,7 @@
             </div>
             <div>
               <label for="dateSuivi">Date du suivi</label>
-              <input id="dateSuivi" type="date"/>
+              <input id="dateSuivi" type="month"/>
             </div>
             <div>
               <label for="coutFixe">Coût fixe</label>

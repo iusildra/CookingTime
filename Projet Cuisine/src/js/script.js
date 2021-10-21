@@ -1,47 +1,87 @@
 const html= document.getElementsByTagName("html");
 const type= html.item(0).id;
+const listeElement= document.getElementById("listeElement");
 const boutonListe= document.getElementById("boutonListe");
 const boutonAjouterElement= document.getElementById("boutonAjouterElement");
 
-// Pour fiche :
 
-//document.body.onload= requeteAJAXaffichage(type);
-
-
+document.body.onload= remplirBalisesSelect();
 
 boutonListe.addEventListener("click", function (){
-    requeteAJAXaffichage(type);
+    listeElement.parentElement.parentElement.hidden='';
+    requeteAJAXgetAll(type,afficherListe);
 });
 
 boutonAjouterElement.addEventListener("click",function () {
     viderAffichage();
 });
 
+function ajouterOptions(req,balise){
+    console.log(req);
+    tab= JSON.parse(req.responseText);
+    for(element of tab){
+        values=Object.values(element)
+        option=document.createElement("option");
+        option.id="option"+values[0];
+        option.value=values[0];
+        if(values[1]!=null)
+            option.innerHTML=values[1];
+        else option.innerHTML=values[0];
+        balise.append(option);
+    }
+}
 
+function choisirOptions(select,valeur){
+    //options=document.querySelectorAll("."+select+" option");
+    let options = select.childNodes;
+    console.log("j'essaie de trouver option " + valeur );
+    console.log(options);
+    /*options.forEach(option => function () {
+        console.log("salut");
+        console.log(option.innerText+"yo")
+        if (choix.value == valeur)
+            choix.selected = "true";
+    })*/
+    for(choix of options) {
+        console.log("salut");
+        console.log(choix.innerText)
+        if (choix.innerText == valeur)
+            choix.selected = "true";
+    }
+}
 
-
-// Requete d'affichage, elle permet de récupérer les données d'affochage dans la BD et de les afficher
-function requeteAJAXaffichage(nom) {
+function remplirBalisesSelect(){
+    tabBalise=document.querySelectorAll("select");
+    for(balise of tabBalise) {
+        balise.innerHTML="";
+        requeteAJAXgetAll(balise.id, ajouterOptions,balise);
+    }
+}
+// Requete d'affichage, elle permet de récupérer les données d'affichage dans la BD et de les afficher
+function requeteAJAXgetAll(nom,funcToExec,balise) {
     let url = "php/requetesAffichage.php";
     let requete = new XMLHttpRequest();
     requete.open("POST", url, true);
     requete.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     requete.addEventListener("load", function () {
-        afficherListe(requete);
+        funcToExec(requete,balise);
     });
     requete.send("objet=" + nom);
 }
 
 function viderListe(){
-    let liste = document.getElementById("listeElement");
+    let liste = document.querySelector("#listeElement");
     liste.innerHTML = "";
 }
 
 function viderAffichage(){
-    let tab = document.querySelectorAll("#affichageElement input");
+    let tab = document.querySelectorAll("#affichageElement input,select");
     for (input of tab){
         if (input.type != "checkbox"){
-            input.value = "";
+            if(input.name != "select")
+                input.value = "";
+            else
+                input.value="";
         }
         else{
             input.checked = "";
@@ -84,13 +124,8 @@ function actualiserListe(){
 function afficherListe(req) {
     viderListe();
     tab=JSON.parse(req.responseText);
-    let liste = document.getElementById("listeElement");
-    let a= document.createElement("a");
-    a.href="#affichageElement";
-    let table = document.createElement("table");
+    let table = document.getElementById("listeElement");
     let trHead = document.createElement("tr");
-    liste.append(a);
-    a.append(table)
     table.append(trHead);
     tabAttributs=Object.keys(tab[0]);
     for (let val of tabAttributs) {
@@ -109,7 +144,7 @@ function afficherListe(req) {
             tr.append(th);
         }
         tr.addEventListener("click", function () {
-            requeteAJAXSelection(type,event.target.parentNode.id);
+            requeteAJAXSelection(type,event.target.parentNode.id,fenetreObjet);
         });
     }
 }
@@ -129,39 +164,35 @@ function requeteAJAXAdd (objet, tabValeur) {
     }
 }
 
-function requeteAJAXSelection (objet,valeur){
+function requeteAJAXSelection (objet,valeur,funcToExec){
     let url = "php/requetesSelection.php";
     let requete = new XMLHttpRequest();
     requete.open("POST",url,true);
     requete.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     requete.addEventListener("load",function () {
-        if(objet==="Contenir")
-            remplirIngredients(requete);
-        else if(objet==="PeutContenir")
-            remplirSousRecettes(requete);
-        else
-            fenetreObjet(requete);
-        if(objet==="Fiche") {
-            requeteAJAXSelection("Contenir", valeur);
-            requeteAJAXSelection("PeutContenir", valeur);
-        }
+        funcToExec(requete,valeur);
     });
     requete.send("objet=" + objet + "&id=" + valeur);
 }
 
-function fenetreObjet(req){
-    viderAffichage()
+function fenetreObjet(req,valeur){
+    viderAffichage();
     tab=JSON.parse(req.responseText)[0];
     console.log(tab);
     tabAttributs=Object.keys(tab);
     if(type==="Fiche"){
-        remplirEtapes(tab["Etapes"]);
-        tabAttributs=tabAttributs.slice(0,7);
+        remplirRecette(tab["Etapes"],valeur)
+        tabAttributs=tabAttributs.slice(0,6);
     }
     for (attribut of tabAttributs) {
-        console.log(attribut);
-        if (document.getElementById(attribut).type !== "checkbox") {
-            document.getElementById(attribut).value = tab[attribut];
+        if (document.getElementById(attribut).type != "checkbox") {
+            if(document.getElementById(attribut).tagName != "SELECT") {
+                document.getElementById(attribut).value = tab[attribut];
+            }
+            else {
+                console.log("je remplis avec choisirOption pour "+ attribut);
+                choisirOptions(document.getElementById(attribut), tab[attribut]);
+            }
         } else if (tab[attribut] == 1) {
             document.getElementById(attribut).checked = "true";
         } else {
