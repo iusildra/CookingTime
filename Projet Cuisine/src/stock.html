@@ -5,16 +5,18 @@
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header>
-      <div data-gjs="navbar">
-        <nav data-gjs="navbar-menu" class="navbar">
-          <div><h1><a href="index.html" id="accueilLink">Accueil</a></h1></div>
-          <div><h1><a href="ingredients.html" id="ingredientLink">Ingrédients</a></h1></div>
-          <div><h1><a href="suivi.html">Suivi</a></h1></div>
-          <div><h1><a href="stock.html" id="stockLink">Stock</a></h1></div>
-        </nav>
-      </div>
-    </header>
+  <header>
+    <div class="page">
+      <nav class="page__menu page__custom-settings menu">
+        <ul class="menu__list r-list">
+          <li class="menu__group"><a href="index.html" class="menu__link r-link text-underlined">Accueil</a></li>
+          <li class="menu__group"><a href="ingredients.html" id="ingredientLink" class="menu__link r-link text-underlined">Ingrédient</a></li>
+          <li class="menu__group"><a href="suivi.html" class="menu__link r-link text-underlined">Suivi</a></li>
+          <li class="menu__group"><a href="stock.html" id="stockLink" class="menu__link r-link text-underlined">Stock</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
     <h1>Gestion de ma cuisine</h1>
 
@@ -53,8 +55,8 @@
       </fieldset>
         </div>
       <div>
-      <fieldset>
-        <legend><h2>Affichage des fiches de suivi</h2></legend>
+      <fieldset hidden>
+        <legend><h2>Affichage du stock</h2></legend>
         <div id="affichageElement"></div>
       </fieldset>
       </div>

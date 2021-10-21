@@ -8,12 +8,14 @@
   </head>
   <body>
   <header>
-    <div data-gjs="navbar">
-      <nav data-gjs="navbar-menu" class="navbar">
-        <div><h1><a href="#" id="accueilLink">Accueil</a></h1></div>
-        <div><h1><a href="ingredients.html" id="ingredientLink">Ingrédients</a></h1></div>
-        <div><h1><a href="suivi.html">Suivi</a></h1></div>
-        <div><h1><a href="stock.html" id="stockLink">Stock</a></h1></div>
+    <div class="page">
+      <nav class="page__menu page__custom-settings menu">
+        <ul class="menu__list r-list">
+          <li class="menu__group"><a href="index.html" class="menu__link r-link text-underlined">Accueil</a></li>
+          <li class="menu__group"><a href="ingredients.html" id="ingredientLink" class="menu__link r-link text-underlined">Ingrédient</a></li>
+          <li class="menu__group"><a href="suivi.html" class="menu__link r-link text-underlined">Suivi</a></li>
+          <li class="menu__group"><a href="stock.html" id="stockLink" class="menu__link r-link text-underlined">Stock</a></li>
+        </ul>
       </nav>
     </div>
   </header>
@@ -69,7 +71,7 @@
         <button id="ajouterIngredientFiche">Creation d'ingrédients</button>
         <div id="contenuRecette">
           <div class="colonneRecette">
-            <fieldset>
+            <fieldset class="fieldset2">
               <legend><h3>Etapes</h3></legend>
               <div id="etapesRecette" class="elementsRecette">
                 <div id="etape1" class="etape">
@@ -89,10 +91,10 @@
                 </div>
               </div>
               <button id="boutonAjouterEtape">+</button>
-            </fieldset>
+            </fieldset class="fieldset2">
           </div>
           <div class="colonneRecette">
-            <fieldset>
+            <fieldset class="fieldset2" >
             <legend><h3>Ingredient</h3></legend>
             <table>
               <thead>
@@ -107,7 +109,7 @@
             </fieldset>
           </div>
           <div class="colonneRecette">
-            <fieldset>
+            <fieldset class="fieldset2">
               <legend><h3>Sous-recettes</h3></legend>
               <table>
                 <thead>
