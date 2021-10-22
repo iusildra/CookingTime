@@ -55,7 +55,6 @@ button{
   border: 4px double #cccccc;
   color: #eeeeee;
   text-align: center;
-  font-size: 15px;
   padding: 10px;
   transition: all 0.5s;
   cursor: pointer;
@@ -107,7 +106,7 @@ fieldset{
 }
 
 .colonneRecette{
-  width: 33.3%;
+  width: 100%;
 }
 
 table{
@@ -117,4 +116,17 @@ table{
 h1{
   text-align: center;
   letter-spacing: 2px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-size: 50px;
+  font-weight: 600;
+}
+
+.affichage label {
+  display: block;
+  width: 150px;
+  float: left;
+}
+
+.baliseSelect {
+  margin : 5px;
 }

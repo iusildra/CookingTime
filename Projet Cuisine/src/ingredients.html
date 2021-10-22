@@ -42,11 +42,11 @@
         </fieldset>
       </div>
       <div id="affichageElement">
-        <fieldset id="formulaireIngredient">
+        <fieldset id="formulaireIngredient" class="affichage">
           <legend> <h2> Ingredient</h2></legend>
           <div>
             <div>
-              <label for="idIngredient"> Idenfiant de l'ingrédient</label>
+              <label for="idIngredient"> id ingrédient</label>
               <input type="number" id="idIngredient" readonly />
             </div>
             <div>
@@ -64,11 +64,11 @@
             </div>
             <div>
               <label for="quantiteStock">Quantité en stock</label>
-              <input type="number" id="quantiteStock" min="0"/>
+              <input type="number" id="quantiteStock" min="0" class="baliseSelect"/>
             </div>
             <div>
               <label for="unite">Unité</label>
-              <select id="unite"/></select>
+              <select id="unite" class="baliseSelect"/></select>
             </div>
             <div>
               <label for="tva">Type de TVA</label>
