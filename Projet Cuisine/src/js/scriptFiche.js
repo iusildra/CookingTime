@@ -41,7 +41,7 @@ function ajouterEtape(contenu){
 // value='" + contenu[0]"'
 function ajouterIngredient(contenu) {
     let tr = document.createElement("tr");
-    tr.innerHTML = "<td><select class='baliseSelect'/></select></td>\n"+
+    tr.innerHTML = "<td><select/></select></td>\n"+
         "<td><input id='quantite'type='number' value='"+contenu[2]+"'/>  "+contenu[3]+"</td>\n"+
         "<td><button class='boutonSupprimerElementRecette'>X</button></td>";
     ingredients.append(tr);

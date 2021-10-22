@@ -87,7 +87,7 @@ button:hover span:after {
 
 /* -------------------------------------------------FIN BOUTON -------------------------------------------------------------------- */
 
-input{
+input, select{
   padding: 5px 5px;
   margin : 5px;
 }
@@ -121,12 +121,9 @@ h1{
   font-weight: 600;
 }
 
-.affichage label {
+#Ingredient #affichageElement label,
+#Suivi #affichageElement label {
   display: block;
   width: 150px;
   float: left;
-}
-
-.baliseSelect {
-  margin : 5px;
 }
