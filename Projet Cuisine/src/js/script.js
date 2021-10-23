@@ -3,6 +3,9 @@ const type= html.item(0).id;
 const listeElement= document.getElementById("listeElement");
 const boutonListe= document.getElementById("boutonListe");
 const boutonAjouterElement= document.getElementById("boutonAjouterElement");
+const boutonImpression= document.getElementById("boutonImpression");
+
+
 
 
 document.body.onload= remplirBalisesSelect();
@@ -15,6 +18,10 @@ boutonListe.addEventListener("click", function (){
 boutonAjouterElement.addEventListener("click",function () {
     viderAffichage();
 });
+
+boutonImpression.addEventListener("click", function () {
+    window.print();
+})
 
 function ajouterOptions(req,balise){
     console.log(req);
