@@ -23,10 +23,11 @@ function ajouterEtape(contenu){
     let div=document.createElement("div");
     div.id="etape" + nbEtape;
     div.className="etape";
-    div.innerHTML="<div><p>N° d'étape</p>\n" +
-        "                    <input class='id' type='number' value='"+ nbEtape +"' readonly/>\n" +
-        "                    <p>Durée de l'étape (min)</p>"+
-        "                    <input type='number' id=\"dureePhase\" value='"+ parseInt(contenu[1]) +"'/><br />" +
+    div.innerHTML="<div><div><span>N° d'étape</span><span>Durée étape (min)</span></div>\n" +
+        "                    <div>\n"+
+        "                       <input class='id' type='number' value='"+ nbEtape +"' readonly/>\n" +
+        "                       <input type='number' id=\"dureePhase\" value='"+ parseInt(contenu[1]) +"'/>" +
+        "                    </div>\n"+
         "                    <p>Description</p>\n" +
         "                    <textarea class='descriptionEtape' rows='4' cols='45'>"+ contenu[0] +"</textarea>\n" +
         "                  </div>\n" +

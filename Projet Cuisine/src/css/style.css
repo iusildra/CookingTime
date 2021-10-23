@@ -127,3 +127,14 @@ h1{
   width: 150px;
   float: left;
 }
+
+@media print{
+  head, header, #rechercherElement, button, h1{
+    display : none;
+  }
+}
+
+.etape>div>div{
+  display: flex;
+  justify-content: space-around;
+}
