@@ -1,0 +1,19 @@
+------------------------ Fichier memo accès au site web ------------------------
+
+Lien site web : https://cookingtimepolytech.000webhostapp.com/ 
+
+------------------------ Administration du site web ------------------------
+La base de donnée du site est accessible via phpMyAdmin qui est un gestionnaire de base de donnée.
+Normalement, il n'y a pas besoin de modifier la base de donnée à la main si le site web fonctionne bien.
+
+Le lien pour y accéder est : https://databases-auth.000webhost.com/db_structure.php?server=1&db=id17823619_bd 
+- Nom d'utilisateur : admin
+- Mot de passe : Cuisine12345! 
+
+Nom base de donnée : id17823619_bd
+
+Connexion à la base de donnée à partir du fichier conf.php :
+	'hostname' => 'localhost',
+	'database' => 'id17823619_bd',
+	'login'    => 'id17823619_admin',
+	'password' => 'Cuisine12345!'
