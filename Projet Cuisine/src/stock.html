@@ -9,25 +9,23 @@
   <header>
     <div class="page">
       <nav class="page__custom-settings">
-        <div class="menu__group"><a href="index.html" class="divMenu">Fiche technique</a></div>
-        <div class="menu__group"><a href="ingredients.html" id="ingredientLink" class="divMenu">Ingrédient</a></div>
-        <div class="menu__group"><a href="suivi.html" class="divMenu">Suivi</a></div>
-        <div class="menu__group"><a href="stock.html" id="stockLink" class="divMenu">Stock</a></div>
+        <div><a href="index.html" class="divMenu">Fiche technique</a></div>
+        <div><a href="ingredients.html" class="divMenu">Ingrédient</a></div>
+        <div><a href="suivi.html" class="divMenu">Suivi</a></div>
+        <div><a href="stock.html" class="divMenu">Gestion</a></div>
       </nav>
     </div>
   </header>
 
     <h1>Gestion de ma cuisine</h1>
 
-    <div id="rechercherElement">
-      <div>
+    <div id="contenuPage">
+      <div id="rechercherElement">
       <fieldset>
         <legend><h2>Gérer mon stock</h2></legend>
-
         <div id="chercherStock" class="stockeQte">
           <input id="rechercher" type="text" placeholder="Ingredient" />
           <button id="boutonRechercher">Rechercher</button>
-
           <div class="stockQte">
             <label for="ajouterStock">Ajouter</label>
             <input id="ajouterStock" type="number" value="0" min="0" max="1000"/>
@@ -35,22 +33,11 @@
           </div>
           <div class="stockQte">
             <label for="supprimerStock">Supprimer</label>
-            <input
-              id="supprimerStock"
-              type="number"
-              value="0"
-              min="0"
-              max="1000"
-            />
-            <button id="boutonSupprimerStock" class="button">
-              Suppression
-            </button>
+            <input id="supprimerStock" type="number" value="0" min="0" max="1000"/>
+            <button id="boutonSupprimerStock">Suppression</button>
           </div>
         </div>
-
-        <button id="visualiserStock" class="button">
-          Visualiser mon stock
-        </button>
+        <button id="visualiserStock">Visualiser mon stock</button>
       </fieldset>
         </div>
       <div>
@@ -62,7 +49,7 @@
       <div>
       <fieldset>
         <legend><h2>Gestion des coûts</h2></legend>
-        <table id="couts">
+        <table>
           <tr>
             <td>
               <label for="coutHoraire">Rémunération horaire</label>

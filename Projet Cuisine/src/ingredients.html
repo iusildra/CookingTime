@@ -7,23 +7,22 @@
     <script type="text/javascript" src="js/script.js" defer></script>
   </head>
   <body>
-  <header>
-    <div class="page">
-      <nav class="page__custom-settings">
-        <div class="menu__group"><a href="index.html" class="divMenu">Fiche technique</a></div>
-        <div class="menu__group"><a href="ingredients.html" id="ingredientLink" class="divMenu">Ingrédient</a></div>
-        <div class="menu__group"><a href="suivi.html" class="divMenu">Suivi</a></div>
-        <div class="menu__group"><a href="stock.html" id="stockLink" class="divMenu">Stock</a></div>
-      </nav>
-    </div>
-  </header>
-
+    <header>
+      <div class="page">
+        <nav class="page__custom-settings">
+          <div><a href="index.html" class="divMenu">Fiche technique</a></div>
+          <div><a href="ingredients.html" class="divMenu">Ingrédient</a></div>
+          <div><a href="suivi.html" class="divMenu">Suivi</a></div>
+          <div><a href="stock.html" class="divMenu">Gestion</a></div>
+        </nav>
+      </div>
+    </header>
     <h1>Ingrédients</h1>
-    <div id="rechercherElement">
-      <div>
+    <div id="contenuPage">
+      <div id="rechercherElement">
         <fieldset>
           <legend><h2>Recherche</h2></legend>
-          <div>
+          <div id>
             <input id="rechercher" type="text" placeholder="Entrer un code / nom" />
             <button id="boutonRechercher">Rechercher</button>
           </div>
@@ -31,14 +30,16 @@
             <button id="boutonListe">Afficher la liste des ingrédients</button>
           </div>
           <div>
-            <button id="boutonAjouterElement">Ajouter un ingrédient</button>
+            <button id="boutonCreerElement">Créer un ingrédient</button>
           </div>
         </fieldset>
       </div>
-      <div>
+      <div class="affichageListe">
         <fieldset hidden>
           <legend><h2>Affichage des ingrédients</h2></legend>
-          <a href="#affichageElement"><table id="listeElement"></table></a>
+          <div>
+            <table id="listeElement"><a href="#affichageElement"></a></table>
+          </div>
         </fieldset>
       </div>
       <div id="affichageElement">
@@ -46,7 +47,7 @@
           <legend> <h2> Ingredient</h2></legend>
           <div>
             <div>
-              <label for="idIngredient"> id ingrédient</label>
+              <label for="idIngredient">ID ingrédient</label>
               <input type="number" id="idIngredient" readonly />
             </div>
             <div>
@@ -81,9 +82,9 @@
             </div>
           </div>
 
-          <div class="action">
-            <button id="boutonSupprimerIngredient">Suppression</button>
-            <button id="boutonMAJIngredient">Ajouter / Enregistrer</button>
+          <div>
+            <button id="boutonSupprimerElement">Suppression</button>
+            <button id="boutonAjouterElement">Ajouter / Enregistrer</button>
           </div>
         </fieldset>
       </div>

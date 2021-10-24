@@ -2,26 +2,28 @@ const html= document.getElementsByTagName("html");
 const type= html.item(0).id;
 const listeElement= document.getElementById("listeElement");
 const boutonListe= document.getElementById("boutonListe");
-const boutonAjouterElement= document.getElementById("boutonAjouterElement");
-const boutonImpression= document.getElementById("boutonImpression");
+const boutonCreerElement= document.getElementById("boutonCreerElement");
+const boutonAjoutElement= document.getElementById("boutonAjouterElement");
+
 
 
 
 
 document.body.onload= remplirBalisesSelect();
 
+
+boutonAjoutElement.addEventListener("click", function () {
+
+});
+
 boutonListe.addEventListener("click", function (){
     listeElement.parentElement.parentElement.hidden='';
     requeteAJAXgetAll(type,afficherListe);
 });
 
-boutonAjouterElement.addEventListener("click",function () {
+boutonCreerElement.addEventListener("click",function () {
     viderAffichage();
 });
-
-boutonImpression.addEventListener("click", function () {
-    window.print();
-})
 
 function ajouterOptions(req,balise){
     console.log(req);
@@ -29,11 +31,11 @@ function ajouterOptions(req,balise){
     for(element of tab){
         values=Object.values(element)
         option=document.createElement("option");
-        option.id="option"+values[0];
+        //option.id="option"+values[0];
         option.value=values[0];
         if(values[1]!=null)
-            option.innerHTML=values[1];
-        else option.innerHTML=values[0];
+            option.innerText=values[1];
+        else option.innerText=values[0];
         balise.append(option);
     }
 }
@@ -43,6 +45,7 @@ function choisirOptions(select,valeur){
     let options = select.childNodes;
     console.log("j'essaie de trouver option " + valeur );
     console.log(options);
+    console.log(options[0]);
     /*options.forEach(option => function () {
         console.log("salut");
         console.log(option.innerText+"yo")
@@ -52,13 +55,13 @@ function choisirOptions(select,valeur){
     for(choix of options) {
         console.log("salut");
         console.log(choix.innerText)
-        if (choix.innerText == valeur)
+        if (choix.innerHTML == valeur)
             choix.selected = "true";
     }
 }
 
 function remplirBalisesSelect(){
-    tabBalise=document.querySelectorAll("select");
+    tabBalise=document.querySelectorAll("select:not(.selectRecette)");
     for(balise of tabBalise) {
         balise.innerHTML="";
         requeteAJAXgetAll(balise.id, ajouterOptions,balise);
@@ -157,14 +160,14 @@ function afficherListe(req) {
 }
 
 // Requete d'ajout, elle permet d'ajouter un objet dans la BD ( et dans l'affichage ), elle prend un objet et un tableau de valeur
-function requeteAJAXAdd (objet, tabValeur) {
+function requeteAJAXAdd (objet, tabValeur, funcToExec) {
     if (tabValeur[0] !== "") {
         let url = "php/requetesAjout.php";
         let requete = new XMLHttpRequest();
         requete.open("POST", url, true);
         requete.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         requete.addEventListener("load",function () {
-            afficherListes();
+            funcToExec();
         })
         let urlParametres = "objet=" + objet + "&tabValeur=" + tabValeur;
         requete.send(urlParametres);

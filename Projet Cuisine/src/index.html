@@ -1,134 +1,130 @@
 <!DOCTYPE html>
 <html lang="en" id="Fiche" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/header.css" />
-    <script type="text/javascript" src="js/script.js" defer></script>
-    <script type="text/javascript" src="js/scriptFiche.js" defer></script>
-  </head>
-  <body>
-  <header>
-    <div class="page">
-      <nav class="page__custom-settings">
-          <div class="menu__group"><a href="index.html" class="divMenu">Fiche technique</a></div>
-          <div class="menu__group"><a href="ingredients.html" id="ingredientLink" class="divMenu">Ingrédient</a></div>
-          <div class="menu__group"><a href="suivi.html" class="divMenu">Suivi</a></div>
-          <div class="menu__group"><a href="stock.html" id="stockLink" class="divMenu">Stock</a></div>
-      </nav>
-    </div>
-  </header>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/header.css" />
+        <script type="text/javascript" src="js/script.js" defer></script>
+        <script type="text/javascript" src="js/scriptFiche.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <div class="page">
+                <nav class="page__custom-settings">
+                    <div><a href="index.html" class="divMenu">Fiche technique</a></div>
+                    <div><a href="ingredients.html" class="divMenu">Ingrédient</a></div>
+                    <div><a href="suivi.html" class="divMenu">Suivi</a></div>
+                    <div><a href="stock.html" class="divMenu">Gestion</a></div>
+                </nav>
+            </div>
+        </header>
 
-  <h1>Fiches Techniques</h1>
-
-  <div id="rechercherElement">
-    <div>
-      <fieldset>
-        <legend><h2>Recherche</h2></legend>
-        <div>
-          <input id="rechercher" type="text" placeholder="Entrez une fiche technique"/>
-          <button id="boutonRechercher">Rechercher</button>
-        </div>
-        <div>
-          <button id="boutonListe">Afficher la liste des fiches</button>
-        </div>
-        <div>
-          <button id="boutonAjouterElement">Créer une fiche</button>
-        </div>
-      </fieldset>
-    </div>
-    <div>
-      <fieldset hidden>
-        <legend><h2>Liste des fiches techniques</h2></legend>
-        <a href="#affichageElement"><table id="listeElement"></table></a>
-      </fieldset>
-    </div>
-  </div>
-  <div id="affichageElement">
-      <fieldset>
-        <legend><h2>Fiche technique</h2> </legend>
-        <div>
-          <div id="contenuFiche">
-            <label for="idFiche">ID de la fiche</label>
-            <input id="idFiche" type="number" min="00" max="9999" readonly />
-            <label for="nom">Intitulé</label>
-            <input type="text" id="nom" />
-          </div>
-          <div>
-            <label for="responsable">Responsable</label>
-            <input type="text" id="responsable" />
-            <label for="auteur">Auteur</label>
-            <input type="text" id="auteur" />
-            <label for="nbCouvert">Nombre de couvert</label>
-            <input type="number" id="nbCouvert" value="8" min="0" max="100" />
-            <label for="typeFiche">Type</label>
-            <select id="typeFiche" class="typeFiche"/>
-            </select>
-          </div>
-        </div>
-        <label for="ajouterIngredientFiche">Un oubli ?</label>
-        <button id="ajouterIngredientFiche">Creation d'ingrédients</button>
-        <div id="contenuRecette">
-          <div class="colonneRecette">
-            <fieldset class="fieldset2">
-              <legend><h3>Etapes</h3></legend>
-              <div id="etapesRecette" class="elementsRecette">
-                <div id="etape1" class="etape">
-                  <div>
-                    <div> <span>N° d'étape</span> <span>Durée étape (min)</span> </div>
+        <h1>Fiches Techniques</h1>
+        <div id="contenuPage">
+            <div id="rechercherElement">
+                <fieldset>
+                    <legend><h2>Recherche</h2></legend>
                     <div>
-                      <input class='id' type='number' value="1" readonly/>
-                      <input type='number'/>
+                        <input id="recherche" type="text" placeholder="Recherchez une fiche technique"/>
+                        <button id="boutonRechercher">Rechercher</button>
                     </div>
-                    <p>Description</p>
-                    <textarea class='descriptionEtape' rows='4' cols='45'></textarea>
-                  </div>
-                  <div>
-                    <button class='boutonSupprimerEtape'>Supprimer</button>
-                    <button class='boutonMonterEtape'>↑</button>
-                    <button class='boutonDescendreEtape'>↓</button>
-                  </div>
-                </div>
-              </div>
-              <button id="boutonAjouterEtape">+</button>
-            </fieldset class="fieldset2">
-          </div>
-          <div class="colonneRecette">
-            <fieldset class="fieldset2" >
-            <legend><h3>Ingredient</h3></legend>
-            <table>
-              <thead>
-              <tr>
-                <th>Ingredient</th>
-                <th>Quantité</th>
-              </tr>
-              </thead>
-              <tbody id="ingredientsRecette" class="elementsRecette"></tbody>
-            </table>
-            <button id="boutonAjouterIngredient">+</button>
-            </fieldset>
-          </div>
-          <div class="colonneRecette">
-            <fieldset class="fieldset2">
-              <legend><h3>Sous-recettes</h3></legend>
-              <table>
-                <thead>
-                  <tr>
-                    <th>Recette</th>
-                    <th>Quantité</th>
-                  </tr>
-                </thead>
-                <tbody id="sousRecettesRecette" class="elementsRecette"></tbody>
-              </table>
-              <button id="boutonAjouterSousRecette">+</button>
-            </fieldset>
-          </div>
+                    <div>
+                        <button id="boutonListe">Afficher la liste des fiches</button>
+                    </div>
+                    <div>
+                        <button id="boutonCreerElement">Créer une fiche</button>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="affichageListe">
+                <fieldset hidden>
+                    <legend><h2>Liste des fiches techniques</h2></legend>
+                    <div>
+                        <table id="listeElement"><a href="#affichageElement"></a></table>
+                    </div>
+                </fieldset>
+            </div>
         </div>
-        <button id="boutonAjouterFiche" class="button">Ajout / mettre à jour</button>
-        <button id="boutonSupprimerFiche">Suppression</button>
-        <button id="boutonImprimerEtiquette">Impression d'étiquette</button>
-        <button id="boutonImpression">Impression</button>
-      </fieldset>
-    </div>
-  </body>
+        <div id="affichageElement">
+            <fieldset>
+                <legend><h2>Fiche technique</h2> </legend>
+                <div>
+                    <div id="contenuFiche">
+                        <label for="idFiche">ID de la fiche</label>
+                        <input id="idFiche" type="number" min="00" max="9999" readonly />
+                        <label for="nom">Intitulé</label>
+                        <input type="text" id="nom" />
+                    </div>
+                    <div>
+                        <label for="responsable">Responsable</label>
+                        <input type="text" id="responsable" />
+                        <label for="auteur">Auteur</label>
+                        <input type="text" id="auteur" />
+                        <label for="nbCouvert">Nombre de couvert</label>
+                        <input type="number" id="nbCouvert" value="8" min="0" max="100" />
+                        <label for="typeFiche">Type</label>
+                        <select id="typeFiche" class="typeFiche"/>
+                        </select>
+                    </div>
+                </div>
+                <label for="ajouterIngredientFiche">Un oubli ?</label>
+                <button id="ajouterIngredientFiche">Creation d'ingrédients</button>
+                <div id="contenuRecette">
+                    <div class="colonneRecette">
+                        <fieldset>
+                            <legend><h3>Etapes</h3></legend>
+                            <div id="etapesRecette" class="elementsRecette">
+                            </div>
+                            <button id="boutonAjouterEtape">+</button>
+                        </fieldset >
+                    </div>
+                    <div class="colonneRecette">
+                        <fieldset>
+                            <legend><h3>Ingredient</h3></legend>
+                            <table>
+                                <thead hidden="true">
+                                <tr>
+                                    <th>Ingredient</th>
+                                    <th>Quantité</th>
+                                </tr>
+                                </thead>
+                                <tbody id="ingredientsRecette" class="elementsRecette"></tbody>
+                            </table>
+                            <button id="boutonAjouterIngredient">+</button>
+                        </fieldset>
+                    </div>
+                    <div class="colonneRecette">
+                        <fieldset>
+                            <legend><h3>Sous-recettes</h3></legend>
+                            <table>
+                                <thead hidden="true">
+                                <tr>
+                                    <th>Recette</th>
+                                    <th>Quantité</th>
+                                </tr>
+                                </thead>
+                                <tbody id="sousRecettesRecette" class="elementsRecette"></tbody>
+                            </table>
+                            <button id="boutonAjouterSousRecette">+</button>
+                        </fieldset>
+                    </div>
+                </div>
+                <button id="boutonAjouterElement">Ajout / mettre à jour</button>
+                <button id="boutonSupprimerElement">Suppression</button>
+                <button id="boutonImprimerEtiquette">Impression d'étiquette</button>
+                <button id="boutonImprimerFiche">Impression</button>
+            </fieldset>
+        </div>
+        <div id="printer" hidden>
+            <div id="printEtape" class="colonneRecette">
+
+            </div>
+            <div id="printIngredient" class="printInfo">
+
+            </div>
+            <div id="printSousRecette" class="printInfo">
+
+            </div>
+        </div>
+    </body>
 </html>

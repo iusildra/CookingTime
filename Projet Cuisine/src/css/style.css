@@ -1,135 +1,131 @@
 
+
 html{
-  font-family: system-ui ;
+    font-family: system-ui ;
 }
 
 a {
-  text-decoration:none;
-  color: #000
+    text-decoration:none;
+    color: #000
 }
 
 body {
-  margin: 0;
-  background-color: #FFFFF8;
+    margin: 0;
+    background-color: #FFFFF8;
 }
 
 .etape {
-  padding: 10px;
-  border: 2px dotted black;
-}
-
-.etape label {
-  display: block;
+    padding: 10px;
+    border: 2px dotted black;
 }
 
 .stockQte {
-  margin: 20px 0px 20px 0px;
+    margin: 20px 0px 20px 0px;
 }
-
-
-.action {
-  margin-top: 20px;
-}
-
 
 table,
 th,
 td {
-  padding: 5px;
-  border: 1px solid black;
-  border-collapse: collapse;
+    padding: 5px;
+    border: 1px solid black;
+    border-collapse: collapse;
 }
 
-#rechercherElement,#contenuRecette {
-  display: flex;
+#contenuPage,#contenuRecette {
+    display: flex;
 }
 
 .qteIngredient{
-  width: 40%;
+    width: 40%;
 }
-/* -----------------------------------------------BOUTON ------------------------------------------------------------------------------- */
+
 button{
-  display: inline-block;
-  background-color: #6D071A;
-  border-radius: 10px;
-  border: 4px double #cccccc;
-  color: #eeeeee;
-  text-align: center;
-  padding: 10px;
-  transition: all 0.5s;
-  cursor: pointer;
-  margin: 5px;
+    display: inline-block;
+    background-color: #6D071A;
+    border-radius: 10px;
+    border: 4px double #cccccc;
+    color: #eeeeee;
+    text-align: center;
+    padding: 10px;
+    transition: all 0.5s;
+    cursor: pointer;
+    margin: 5px;
 }
+
 button span {
-  cursor: pointer;
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: 0.5s;
 }
 button span:after {
-  content: '\00bb';
-  position: absolute;
-  opacity: 0;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
+    content: '\00bb';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    right: -20px;
+    transition: 0.5s;
 }
 button:hover {
-  background-color: #a42424;
+    background-color: #a42424;
 }
 button:hover span {
-  padding-right: 25px;
+    padding-right: 25px;
 }
 button:hover span:after {
-  opacity: 1;
-  right: 0;
+    opacity: 1;
+    right: 0;
 }
 
-/* -------------------------------------------------FIN BOUTON -------------------------------------------------------------------- */
 
-input, select{
-  padding: 5px 5px;
-  margin : 5px;
+input, select {
+    padding: 5px 5px;
+    margin: 5px;
+    max-width:100px;
 }
+
+/*   -moz-border-radius:8px;
+-webkit-border-radius:8px; */
 
 fieldset{
-  text-align: center;
-  border:2px solid #6d071a;
-  -moz-border-radius:8px;
-  -webkit-border-radius:8px;
-  border-radius:8px;
-  background-color: #eeeeee;
-  margin: 5px;
+    text-align: center;
+    border:2px solid #6d071a;
+    border-radius:8px;
+    background-color: #eeeeee;
+    margin: 5px;
 }
-.fieldset2{
-  background-color: #d5d5d5;
+.colonneRecette fieldset{
+    background-color: #d5d5d5;
 }
 
-.colonneRecette{
-  width: 100%;
+#affichageElement>fieldset>div>div{
+    justify-content: space-between;
 }
 
-table{
-  width: 100%;
+.colonneRecette,table{
+    width: 100%;
+}
+
+#contenuRecette{
+    justify-content: space-between;
 }
 
 h1{
-  text-align: center;
-  letter-spacing: 2px;
-  font-family: 'Open Sans Condensed', sans-serif;
-  font-size: 50px;
-  font-weight: 600;
+    text-align: center;
+    letter-spacing: 2px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 50px;
+    font-weight: 600;
 }
 
 #Ingredient #affichageElement label,
 #Suivi #affichageElement label {
-  display: block;
-  width: 150px;
-  float: left;
+    width: 50%;
+    padding: 5px 5px;
 }
 
 @media print{
-  head, header, #rechercherElement, button, h1{
+  head, header, #contenuPage, button, h1{
     display : none;
   }
 }
@@ -137,4 +133,21 @@ h1{
 .etape>div>div{
   display: flex;
   justify-content: space-around;
+}
+#printer {
+    display: none;
+}
+.printInfo {
+    width: 60%;
+    display: flex;
+    border: 1px dotted black;
+}
+
+.affichageListe fieldset{
+    overflow: scroll;
+    max-height: 600px;
+}
+
+.affichageListe>fieldset>div{
+    max-height: 500px;
 }
