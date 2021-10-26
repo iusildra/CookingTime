@@ -19,6 +19,58 @@
 
     <h1>Gestion de ma cuisine</h1>
 
+    <div class="affichageElement">
+      <div class="affichageElement">
+        <fieldset>
+          <legend><h2>TVA</h2></legend>
+          <div>
+            <select id="choisirTVA">
+              <option value="valTVA">nomTVA</option>
+            </select>
+          </div>
+          <p>Nom</p>
+          <input type="text" id="typeTVA" />
+          <p>Valeur (%)</p>
+          <input type="number" id="valeur" min="0" max="100" />
+          <div>
+            <button class="boutonAjouterElement">Enregistrer</button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="affichageElement">
+        <fieldset>
+          <legend><h2>Type de fiche</h2></legend>
+          <div>
+            <select id="choisirTypeFiche">
+              <option value="typeFiche">typeFiche</option>
+            </select>
+          </div>
+          <p>Nom</p>
+          <input type="text" id="typeFiche" />
+          <div>
+            <button class="boutonAjouterElement">Enregistrer</button>
+          </div>
+        </fieldset>
+      </div>
+
+      <div class="affichageElement">
+        <fieldset>
+          <legend><h2>Type d'ingrédient</h2></legend>
+          <div>
+            <select id="choisirTypeIngredient">
+              <option value="typeIngredient">typeIngredient</option>
+            </select>
+          </div>
+          <p>Nom</p>
+          <input type="text" id="typeIngredient" />
+          <div>
+            <button class="boutonAjouterElement">Enregistrer</button>
+          </div>
+        </fieldset>
+      </div>
+    </div>
+
     <div id="contenuPage">
       <div id="rechercherElement">
       <fieldset>
@@ -44,33 +96,6 @@
       <fieldset hidden>
         <legend><h2>Affichage du stock</h2></legend>
         <div id="affichageElement"></div>
-      </fieldset>
-      </div>
-      <div>
-      <fieldset>
-        <legend><h2>Gestion des coûts</h2></legend>
-        <table>
-          <tr>
-            <td>
-              <label for="coutHoraire">Rémunération horaire</label>
-              <input id="coutHoraire" type="number" placeholder="0" min="0" max="1000"/>
-            </td>
-            <td>
-              <label for="coutFluide">Cout fluide</label>
-              <input id="coutFluide" type="number" placeholder="0" min="0" />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <label for="perteMatiere">Perte matière (%)</label>
-              <input id="perteMatiere" type="number" placeholder="0" min="0" max="100"/>
-            </td>
-            <td>
-              <label for="fraisFixe">Frais fixe</label>
-              <input id="fraisFixe" type="number" placeholder="0" min="0" />
-            </td>
-          </tr>
-        </table>
       </fieldset>
       </div>
     </div>

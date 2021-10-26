@@ -31,7 +31,7 @@ td {
     border-collapse: collapse;
 }
 
-#contenuPage,#contenuRecette {
+#contenuPage,#contenuRecette,.affichageElement {
     display: flex;
 }
 
@@ -40,7 +40,6 @@ td {
 }
 
 button{
-    display: inline-block;
     background-color: #6D071A;
     border-radius: 10px;
     border: 4px double #cccccc;
@@ -80,8 +79,16 @@ button:hover span:after {
 
 input, select {
     padding: 5px 5px;
-    margin: 5px;
-    max-width:100px;
+    margin: 5px 0px;
+    max-width:40%;
+}
+
+.action{
+    margin-top: 20px;
+}
+
+td select{
+    max-width: 100%;
 }
 
 /*   -moz-border-radius:8px;
@@ -121,7 +128,8 @@ h1{
 #Ingredient #affichageElement label,
 #Suivi #affichageElement label {
     width: 50%;
-    padding: 5px 5px;
+    float: left;
+    margin: 5px 0px;
 }
 
 @media print{
@@ -134,13 +142,21 @@ h1{
   display: flex;
   justify-content: space-around;
 }
-#printer {
-    display: none;
+@media print{
+    head, header, #contenuPage, #affichageElement, button, h1{
+        display : none;
+    }
+    #printer {
+        display: block;
+    }
 }
+.print {
+    display: flex;
+}
+
 .printInfo {
     width: 60%;
-    display: flex;
-    border: 1px dotted black;
+    border-left: 1px solid black;
 }
 
 .affichageListe fieldset{

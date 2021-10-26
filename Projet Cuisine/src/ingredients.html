@@ -23,7 +23,7 @@
         <fieldset>
           <legend><h2>Recherche</h2></legend>
           <div id>
-            <input id="rechercher" type="text" placeholder="Entrer un code / nom" />
+            <input id="recherche" type="text" placeholder="Recherchez une fiche" />
             <button id="boutonRechercher">Rechercher</button>
           </div>
           <div>
@@ -36,7 +36,7 @@
       </div>
       <div class="affichageListe">
         <fieldset hidden>
-          <legend><h2>Affichage des ingrédients</h2></legend>
+          <legend><h2>Liste des ingrédients</h2></legend>
           <div>
             <table id="listeElement"><a href="#affichageElement"></a></table>
           </div>
@@ -47,8 +47,8 @@
           <legend> <h2> Ingredient</h2></legend>
           <div>
             <div>
-              <label for="idIngredient">ID ingrédient</label>
-              <input type="number" id="idIngredient" readonly />
+              <label for="idIngredient" hidden>ID ingrédient</label>
+              <input type="number" id="idIngredient" hidden/>
             </div>
             <div>
               <label for="nom">Nom</label>
@@ -59,17 +59,17 @@
               <input type="number" id="prixU" min="0"/>
             </div>
             <div>
+              <label for="unite">Unité</label>
+              <select id="unite"/></select>
+            </div>
+            <div>
               <label for="typeIngredient">Type</label>
               <select id="typeIngredient" />
               </select>
             </div>
             <div>
-              <label for="quantiteStock">Quantité en stock</label>
-              <input type="number" id="quantiteStock" min="0"/>
-            </div>
-            <div>
-              <label for="unite">Unité</label>
-              <select id="unite"/></select>
+              <label for="quantite">Quantité en stock</label>
+              <input type="number" id="quantite" min="0"/>
             </div>
             <div>
               <label for="tva">Type de TVA</label>
@@ -81,10 +81,9 @@
               <input type="checkbox" id="allergene" value=1/>
             </div>
           </div>
-
-          <div>
+          <div class="action">
             <button id="boutonSupprimerElement">Suppression</button>
-            <button id="boutonAjouterElement">Ajouter / Enregistrer</button>
+            <button id="boutonAjouterElement">Enregistrer</button>
           </div>
         </fieldset>
       </div>

@@ -2,7 +2,7 @@
 require "Model.php";
 
 function getFiches(){
-    $sql = 'SELECT F.idFiche, F.nom, F.auteur,F.nbCouvert,F.typeFiche
+    $sql = 'SELECT F.idFiche, F.nom, F.auteur,F.responsable,F.nbCouvert,F.typeFiche
                 FROM fiche F';
     $req = Model::$pdo->query($sql);
     $req->setFetchMode(PDO::FETCH_OBJ);
@@ -115,9 +115,10 @@ function selectionSuivi($valeur){
 }
 
 function selectionContenir($valeur){
-    $sql= "SELECT I.idIngredient,I.nom,C.quantiteIngredient,I.unite
+    $sql= "SELECT I.idIngredient,I.nom,C.quantiteIngredient,I.unite,I.prixU,T.valeur
             FROM contenir C 
             join ingredient I on C.idIngredient=I.idIngredient
+            join tva T on T.typeTva=I.tva
             where C.idFiche=:val";
     $req = Model::$pdo->prepare($sql);
     $val = array("val"=>$valeur);
@@ -128,7 +129,7 @@ function selectionContenir($valeur){
 }
 
 function selectionPeutContenir($valeur){
-    $sql= "SELECT F.idFiche,F.nom,P.quantiteSousRecette
+    $sql= "SELECT F.idFiche,F.nom
             FROM peutcontenir P 
             join Fiche F on P.idFicheSousRecette=F.idFiche
             where P.idFicheRecette=:val";
@@ -156,12 +157,37 @@ function selectionObjet($objet, $valeur){
     }
 }
 
+
 function selectionMultipleFiche($valeur){
-    $sql= "SELECT * 
+    $sql= "SELECT idFiche, nom, auteur, nbCouvert, typeFiche
            FROM fiche 
-           WHERE idFiche like :chaine or nom like :chaine or auteur LIKE :chaine or responsable LIKE :chaine or typeFiche LIKE :chaine ";
+           WHERE nom LIKE :chaine or auteur LIKE :chaine or responsable LIKE :chaine or typeFiche LIKE :chaine ";
     $req = Model::$pdo->prepare($sql);
-    $val = array("chaine"=>$valeur + "%");
+    $val = array("chaine"=>"%" . $valeur . "%");
+    $req->execute($val);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $tab = $req->fetchAll();
+    return $tab;
+}
+
+function selectionMultipleIngredient($valeur){
+    $sql= "SELECT * 
+           FROM ingredient
+           WHERE nom like :chaine or typeIngredient LIKE :chaine" ;
+    $req = Model::$pdo->prepare($sql);
+    $val = array("chaine"=>"%" . $valeur . "%");
+    $req->execute($val);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $tab = $req->fetchAll();
+    return $tab;
+}
+
+function selectionMultipleSuivi($valeur){
+    $sql= "SELECT * 
+           FROM suivi
+           WHERE anneeSuivi LIKE :chaine or moisSuivi LIKE :chaine";
+    $req = Model::$pdo->prepare($sql);
+    $val = array("chaine"=>"%" . $valeur . "%");
     $req->execute($val);
     $req->setFetchMode(PDO::FETCH_OBJ);
     $tab = $req->fetchAll();
@@ -179,28 +205,33 @@ function selectionMultiple($objet,$valeur){
     }
 }
 
+
 function addFiche($tabValeur){
-    $sql = 'INSERT INTO fiche (nom,auteur,nbCouvert,Etapes,typeFiche) VALUES (?,?,?,?,?);';
+    $sql = 'INSERT INTO fiche (nom,responsable,auteur,nbCouvert,typeFiche,Etapes) VALUES (?,?,?,?,?,?);';
     $req=Model::$pdo->prepare($sql);
-    $req->execute([$tabValeur['nom'],$tabValeur['auteur'],$tabValeur['nbCouvert'],$tabValeur['etapes'],$tabValeur['typeFiche']]);
+    $tab= array($tabValeur[0],$tabValeur[1],$tabValeur[2],$tabValeur[3],$tabValeur[4],$tabValeur[5]);
+    $req->execute($tab);
 }
 
 function addIngredient($tabValeur){
-    $sql = 'INSERT INTO ingredient (nom,prixU,allergene,idTva,typeIngredient,unite) VALUES (?,?,?,?,?,?);';
+    $sql = 'INSERT INTO ingredient (nom,prixU,unite,typeIngredient,quantiteStock,tva,allergene) VALUES (?,?,?,?,?,?,?);';
     $req=Model::$pdo->prepare($sql);
-    $req->execute([$tabValeur['nom'],$tabValeur['prixU'],$tabValeur['allergene'],$tabValeur['idTva'],$tabValeur['typeIngredient'],$tabValeur['unite']]);
+    $tab = array($tabValeur[0],doubleval($tabValeur[1]), $tabValeur[2], $tabValeur[3], intval($tabValeur[4]), $tabValeur[5],intval($tabValeur[6]));
+    $req->execute($tab);
 }
 
 function addContenir($tabValeur){
-    $sql= 'INSERT INTO contenir (idFiche,idIngredient,quantite) VALUES (?,?,?);';
+    $sql= 'INSERT INTO contenir (idFiche,idIngredient,quantiteIngredient) VALUES (?,?,?);';
     $req=Model::$pdo->prepare($sql);
-    $req->execute([$tabValeur["idFiche"], $tabValeur["idIngredient"],$tabValeur["quantite"]]);
+    $tab= array($tabValeur[0], $tabValeur[1],$tabValeur[2]);
+    $req->execute($tab);
 }
 
 function addPeutContenir($tabValeur){
-    $sql= 'INSERT INTO peutcontenir (idFicheRecette,idFicheSousRecette,quantite) VALUES (?,?,?);';
+    $sql= 'INSERT INTO peutcontenir (idFicheRecette,idFicheSousRecette) VALUES (?,?);';
     $req=Model::$pdo->prepare($sql);
-    $req->execute([$tabValeur["idFicheRecette"], $tabValeur["idFicheSousRecette"],$tabValeur["quantite"]]);
+    $tab = array($tabValeur[0], $tabValeur[1]);
+    $req->execute($tab);
 }
 
 function addtypeFiche($valeur){
@@ -211,6 +242,48 @@ function addtypeFiche($valeur){
 function addTypeIngredient($valeur){
     $sql = 'INSERT INTO typeingredient (typeIngredient) VALUES (?);';
     Model::$pdo->prepare($sql)->execute([$valeur]);
+}
+
+function updateFiche($tabValeur){
+    $sql = 'UPDATE Fiche
+            SET nom=?, responsable=?, 
+                auteur=?, nbCouvert=?,
+                typeFiche=?, etapes=?
+            WHERE idFiche=?';
+    $req = Model::$pdo->prepare($sql);
+    $tab= array($tabValeur[0],$tabValeur[1], $tabValeur[2], intval($tabValeur[3]), $tabValeur[4], $tabValeur[5], intval($tabValeur[6]));
+    $req->execute($tab);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $obj = $req->fetchAll();
+    return $obj;
+
+}
+
+function updateIngredient($tabValeur){
+    $sql = 'UPDATE Ingredient
+            SET nom=?, prixU=?, 
+                unite=?, typeIngredient=?,
+                quantite=?, tva=?,
+                allergene=?
+            WHERE idIngredient=?';
+    $req = Model::$pdo->prepare($sql);
+    $tab= array($tabValeur[0],$tabValeur[1], $tabValeur[2], $tabValeur[3], intval($tabValeur[4]), $tabValeur[5],$tabValeur[6], $tabValeur[7]);
+    $req->execute($tab);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $obj = $req->fetchAll();
+    return $obj;
+
+}
+
+function update($objet, $tabValeur) {
+    switch ($objet) {
+        case "Fiche":
+            updateFiche($tabValeur);
+            break;
+        case "Ingredient":
+            updateIngredient($tabValeur);
+            break;
+    }
 }
 
 function add ($objet, $tabValeur) {
@@ -260,17 +333,17 @@ function supprimerSuivi($valeur){
     $req->execute($val);
 }
 
-function supprimerContenir($tabValeur){
-    $sql = 'DELETE FROM contenir WHERE idFiche=:val AND idIngredient=:val1';
+function supprimerContenir($valeur){
+    $sql = 'DELETE FROM contenir WHERE idFiche=:val';
     $req = Model::$pdo->prepare($sql);
-    $val= array("val" => $tabValeur["idFiche"] , "val1" => $tabValeur["idIngredient"]);
+    $val= array("val" => $valeur);
     $req->execute($val);
 }
 
-function supprimerPeutContenir($tabValeur){
-    $sql = 'DELETE FROM peutcontenir WHERE idFicheRecette=:val AND idFicheSousRecette=:val1';
+function supprimerPeutContenir($valeur){
+    $sql = 'DELETE FROM peutcontenir WHERE idFicheRecette=:val';
     $req = Model::$pdo->prepare($sql);
-    $val= array("val" => $tabValeur["idFicheRecette"] , "val1" => $tabValeur["idFicheSousRecette"]);
+    $val= array("val" => $valeur);
     $req->execute($val);
 }
 
@@ -312,6 +385,19 @@ function supprimer($objet, $tabValeur){
             supprimerTypeIngredient($tabValeur);
             break;
     }
+}
+
+function getID($val){
+    $sql = 'SELECT F.idFiche
+            FROM fiche F
+            WHERE nom=:val';
+    $req = Model::$pdo->prepare($sql);
+    $tab= array("val" => $val);
+    $req->execute($tab);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $id = $req->fetchAll();
+    return $id;
+
 }
 ?>
 

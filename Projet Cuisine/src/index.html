@@ -48,10 +48,10 @@
         <div id="affichageElement">
             <fieldset>
                 <legend><h2>Fiche technique</h2> </legend>
-                <div>
-                    <div id="contenuFiche">
-                        <label for="idFiche">ID de la fiche</label>
-                        <input id="idFiche" type="number" min="00" max="9999" readonly />
+                <div id="infoFiche">
+                    <div>
+                        <label for="idFiche" hidden>ID de la fiche</label>
+                        <input id="idFiche" type="number" min="00" max="9999" hidden/>
                         <label for="nom">Intitulé</label>
                         <input type="text" id="nom" />
                     </div>
@@ -68,62 +68,77 @@
                     </div>
                 </div>
                 <label for="ajouterIngredientFiche">Un oubli ?</label>
-                <button id="ajouterIngredientFiche">Creation d'ingrédients</button>
+                <a href="ingredients.html"><button id="ajouterIngredientFiche">Creation d'ingrédients</button></a>
                 <div id="contenuRecette">
-                    <div class="colonneRecette">
+                    <div class="affichageListe colonneRecette">
                         <fieldset>
                             <legend><h3>Etapes</h3></legend>
-                            <div id="etapesRecette" class="elementsRecette">
-                            </div>
+                            <div>
+                                <div id="etapesRecette" class="elementsRecette">
+                                </div>
                             <button id="boutonAjouterEtape">+</button>
+                            </div>
                         </fieldset >
                     </div>
-                    <div class="colonneRecette">
+                    <div class="affichageListe colonneRecette">
                         <fieldset>
                             <legend><h3>Ingredient</h3></legend>
-                            <table>
-                                <thead hidden="true">
-                                <tr>
-                                    <th>Ingredient</th>
-                                    <th>Quantité</th>
-                                </tr>
-                                </thead>
-                                <tbody id="ingredientsRecette" class="elementsRecette"></tbody>
-                            </table>
-                            <button id="boutonAjouterIngredient">+</button>
+                            <div>
+                                <table>
+                                    <thead class="tabsRecette" hidden>
+                                    <tr>
+                                        <th>Ingredient</th>
+                                        <th>Quantité</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="ingredientsRecette" class="elementsRecette"></tbody>
+                                </table>
+                                <button id="boutonAjouterIngredient">+</button>
+                            </div>
                         </fieldset>
                     </div>
-                    <div class="colonneRecette">
+                    <div class="affichageListe colonneRecette">
                         <fieldset>
                             <legend><h3>Sous-recettes</h3></legend>
-                            <table>
-                                <thead hidden="true">
-                                <tr>
-                                    <th>Recette</th>
-                                    <th>Quantité</th>
-                                </tr>
-                                </thead>
-                                <tbody id="sousRecettesRecette" class="elementsRecette"></tbody>
-                            </table>
-                            <button id="boutonAjouterSousRecette">+</button>
+                            <div>
+                                <table>
+                                    <thead class="tabsRecette" hidden>
+                                    <tr>
+                                        <th>Recette</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="sousRecettesRecette"class="elementsRecette"></tbody>
+                                </table>
+                                <button id="boutonAjouterSousRecette">+</button>
+                            </div>
                         </fieldset>
                     </div>
                 </div>
-                <button id="boutonAjouterElement">Ajout / mettre à jour</button>
-                <button id="boutonSupprimerElement">Suppression</button>
-                <button id="boutonImprimerEtiquette">Impression d'étiquette</button>
-                <button id="boutonImprimerFiche">Impression</button>
+                <div class="action">
+                    <button id="boutonAjouterElement">Ajout / mettre à jour</button>
+                    <button id="boutonSupprimerElement" hidden>Suppression</button>
+                    <button id="boutonImprimerFiche" hidden>Impression</button>
+                </div>
             </fieldset>
         </div>
         <div id="printer" hidden>
-            <div id="printEtape" class="colonneRecette">
+            <h2>Informations & Sous recettes</h2>
+            <div id="printer1" class="print">
+                <div id="printContenu" class="colonneRecette"></div>
+                <div id="printSousRecettes" class="printInfo"></div>
+            </div>
+            <h2>Contenu</h2>
+            <div id="printer2" class="print">
+                <div id="printEtape" class="colonneRecette"></div>
+                <div id="printIngredient" class="printInfo"></div>
+            </div>
+            <div id="printer3" class="print">
 
             </div>
-            <div id="printIngredient" class="printInfo">
-
-            </div>
-            <div id="printSousRecette" class="printInfo">
-
+            <h2>Durée & prix</h2>
+            <div id="printer4" class="print">
+                <div id="printDuree"></div>
+                <div id="printPrix"></div>
             </div>
         </div>
     </body>
