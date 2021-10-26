@@ -59,9 +59,10 @@ function ajouterFiche() {
         requeteAJAXAdd(type, JSON.stringify(tab));
     }
     idFiche = content[0].value;
-    setTimeout(ajouterContenirIngredientBD, 500);
-    setTimeout(ajouterSousRecetteBD, 500);
-
+    ajouterContenirIngredientBD();
+    console.log("ok1")
+    ajouterSousRecetteBD();
+    console.log("ok2");
 }
 
 function supprimerFicheBD(id){
@@ -71,6 +72,7 @@ function supprimerFicheBD(id){
 }
 
 function ajouterContenirIngredientBD() {
+    console.log("toto")
     let input = document.querySelectorAll("#ingredientsRecette select,#ingredientsRecette input");
     console.log(input)
     for (let i=0;i<input.length;i+=2) {
@@ -80,10 +82,10 @@ function ajouterContenirIngredientBD() {
 }
 
 function ajouterSousRecetteBD() {
-    let input = document.querySelectorAll("#sousRecettesRecette input");
+    let selects = document.querySelectorAll("#sousRecettesRecette select");
     console.log(input)
-    for (let index of input) {
-        let tab = [idFiche, input[index].value]
+    for (select of selects) {
+        let tab = [idFiche, select.value]
         requeteAJAXAdd("PeutContenir", JSON.stringify(tab));
     }
 }
