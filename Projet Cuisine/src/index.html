@@ -25,7 +25,8 @@
                 <fieldset>
                     <legend><h2>Recherche</h2></legend>
                     <div>
-                        <input id="recherche" type="text" placeholder="Recherchez une fiche technique"/>
+                        <input id="recherche" type="text" placeholder="Fiche technique"/>
+                        <input id="rechercheSR" type="text" placeholder="Sous recette"/>
                         <button id="boutonRechercher">Rechercher</button>
                     </div>
                     <div>
@@ -41,6 +42,15 @@
                     <legend><h2>Liste des fiches techniques</h2></legend>
                     <div>
                         <table id="listeElement"><a href="#affichageElement"></a></table>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="affichageListe">
+                <fieldset hidden>
+                    <legend><h2>Sous-recette</h2></legend>
+                    <div>
+                        <table id="listeSousRecettes">
+                        </table>
                     </div>
                 </fieldset>
             </div>
@@ -63,12 +73,11 @@
                         <label for="nbCouvert">Nombre de couvert</label>
                         <input type="number" id="nbCouvert" value="8" min="0" max="100" />
                         <label for="typeFiche">Type</label>
-                        <select id="typeFiche" class="typeFiche"/>
+                        <select id="typeFiche" class="typeFiche">
                         </select>
                     </div>
                 </div>
-                <label for="ajouterIngredientFiche">Un oubli ?</label>
-                <a href="ingredients.html"><button id="ajouterIngredientFiche">Creation d'ingrédients</button></a>
+                <a href="ingredients.html" target="_blank"><button id="ajouterIngredientFiche">Creation d'ingrédients</button></a>
                 <div id="contenuRecette">
                     <div class="affichageListe colonneRecette">
                         <fieldset>
@@ -136,7 +145,7 @@
 
             </div>
             <h2>Durée & prix</h2>
-            <div id="printer4" class="print">
+            <div id="printer4">
                 <div id="printDuree"></div>
                 <div id="printPrix"></div>
             </div>

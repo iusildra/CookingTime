@@ -3,7 +3,20 @@ require "Model.php";
 
 function getFiches(){
     $sql = 'SELECT F.idFiche, F.nom, F.auteur,F.responsable,F.nbCouvert,F.typeFiche
-                FROM fiche F';
+            FROM fiche F
+            ORDER BY nom';
+    $req = Model::$pdo->query($sql);
+    $req->setFetchMode(PDO::FETCH_OBJ);
+    $tab = $req->fetchAll();
+    return $tab;
+}
+
+function getSousRecettes(){
+    $sql = 'SELECT F1.idFiche, F2.nom "Sous recette", F1.nom Recette
+            FROM Fiche F1
+            INNER JOIN PeutContenir ON F1.idFiche = idFicheRecette 
+            LEFT OUTER JOIN Fiche F2 ON idFicheSousRecette = F2.idFiche
+            ORDER BY "Sous recette", Recette';
     $req = Model::$pdo->query($sql);
     $req->setFetchMode(PDO::FETCH_OBJ);
     $tab = $req->fetchAll();
@@ -11,7 +24,7 @@ function getFiches(){
 }
 
 function getIngredients(){
-    $sql = "SELECT * from ingredient I";
+    $sql = "SELECT * from ingredient I ORDER BY nom";
     $req = Model::$pdo->query($sql);
     $req->setFetchMode(PDO::FETCH_OBJ);
     $tab = $req->fetchAll();
@@ -27,7 +40,7 @@ function getSuivis(){
 }
 
 function getTypeFiche(){
-    $sql = "SELECT * FROM typefiche ";
+    $sql = "SELECT * FROM typefiche ORDER BY typeFiche";
     $req = Model::$pdo->query($sql);
     $req->setFetchMode(PDO::FETCH_OBJ);
     $tab = $req->fetchAll();
@@ -35,7 +48,7 @@ function getTypeFiche(){
 }
 
 function getTypeIngredient(){
-    $sql = "SELECT * FROM typeingredient";
+    $sql = "SELECT * FROM typeingredient ORDER BY typeIngredient";
     $req = Model::$pdo->query($sql);
     $req->setFetchMode(PDO::FETCH_OBJ);
     $tab = $req->fetchAll();
@@ -43,7 +56,7 @@ function getTypeIngredient(){
 }
 
 function getTva(){
-    $sql = "SELECT typeTva FROM tva";
+    $sql = "SELECT typeTva FROM tva ORDER BY typeTVA";
     $req = Model::$pdo->query($sql);
     $req->setFetchMode(PDO::FETCH_OBJ);
     $tab = $req->fetchAll();
@@ -51,7 +64,7 @@ function getTva(){
 }
 
 function getUnite(){
-    $sql = "SELECT unite FROM unite";
+    $sql = "SELECT unite FROM unite ORDER BY unite";
     $req = Model::$pdo->query($sql);
     $req->setFetchMode(PDO::FETCH_OBJ);
     $tab = $req->fetchAll();
@@ -74,6 +87,8 @@ function getObjets($objet) {
             return getTva();
         case "unite" :
             return getUnite();
+        case "PeutContenir":
+            return getSousRecettes();
     }
 }
 
@@ -159,9 +174,10 @@ function selectionObjet($objet, $valeur){
 
 
 function selectionMultipleFiche($valeur){
-    $sql= "SELECT idFiche, nom, auteur, nbCouvert, typeFiche
-           FROM fiche 
-           WHERE nom LIKE :chaine or auteur LIKE :chaine or responsable LIKE :chaine or typeFiche LIKE :chaine ";
+    $sql= " SELECT idFiche, nom, auteur, nbCouvert, typeFiche
+            FROM fiche 
+            WHERE nom LIKE :chaine or auteur LIKE :chaine or responsable LIKE :chaine or typeFiche LIKE :chaine
+            ORDER BY nom";
     $req = Model::$pdo->prepare($sql);
     $val = array("chaine"=>"%" . $valeur . "%");
     $req->execute($val);
@@ -173,7 +189,8 @@ function selectionMultipleFiche($valeur){
 function selectionMultipleIngredient($valeur){
     $sql= "SELECT * 
            FROM ingredient
-           WHERE nom like :chaine or typeIngredient LIKE :chaine" ;
+           WHERE nom like :chaine or typeIngredient LIKE :chaine
+           ORDER BY nom" ;
     $req = Model::$pdo->prepare($sql);
     $val = array("chaine"=>"%" . $valeur . "%");
     $req->execute($val);
@@ -185,7 +202,8 @@ function selectionMultipleIngredient($valeur){
 function selectionMultipleSuivi($valeur){
     $sql= "SELECT * 
            FROM suivi
-           WHERE anneeSuivi LIKE :chaine or moisSuivi LIKE :chaine";
+           WHERE anneeSuivi LIKE :chaine or moisSuivi LIKE :chaine
+           ORDER BY anneSuivi desc, moisSuivi desc";
     $req = Model::$pdo->prepare($sql);
     $val = array("chaine"=>"%" . $valeur . "%");
     $req->execute($val);
@@ -214,7 +232,7 @@ function addFiche($tabValeur){
 }
 
 function addIngredient($tabValeur){
-    $sql = 'INSERT INTO ingredient (nom,prixU,unite,typeIngredient,quantiteStock,tva,allergene) VALUES (?,?,?,?,?,?,?);';
+    $sql = 'INSERT INTO ingredient (nom,prixU,unite,typeIngredient,quantite,tva,allergene) VALUES (?,?,?,?,?,?,?);';
     $req=Model::$pdo->prepare($sql);
     $tab = array($tabValeur[0],doubleval($tabValeur[1]), $tabValeur[2], $tabValeur[3], intval($tabValeur[4]), $tabValeur[5],intval($tabValeur[6]));
     $req->execute($tab);

@@ -35,6 +35,10 @@ td {
     display: flex;
 }
 
+#rechercheElement>fieldset>div input[type="text"] {
+    display: block
+}
+
 .qteIngredient{
     width: 40%;
 }

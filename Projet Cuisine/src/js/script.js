@@ -2,6 +2,7 @@ const html= document.getElementsByTagName("html");
 const type= html.item(0).id;
 const listeElement= document.getElementById("listeElement");
 const boutonListe= document.getElementById("boutonListe");
+const listeSR = document.getElementById("listeSousRecettes");
 const boutonCreerElement= document.getElementById("boutonCreerElement");
 const boutonAjoutElement= document.getElementById("boutonAjouterElement");
 const boutonSupprimerElement= document.getElementById("boutonSupprimerElement")
@@ -27,11 +28,9 @@ function ajouterElement(){
                 if (vals[i].type == "number") tab.push(parseFloat(vals[i].value));
                 else tab.push(vals[i].value);
         }
-        console.log(tab)
         if (vals[0].value !== "") {
             var updateTab = tab
             updateTab.push(vals[0].value);
-            console.log(JSON.stringify(updateTab))
             requeteAJAXUpdate(type, JSON.stringify(updateTab));
         } else requeteAJAXAdd(type,JSON.stringify(tab));
     }
@@ -58,10 +57,14 @@ inputRecherche.addEventListener("change",function () {
 })
 
 boutonListe.addEventListener("click", function (){
-    listeElement.parentElement.parentElement.hidden='';
-    boutonListe.hidden='true';
-    requeteAJAXgetAll(type,afficherListe);
+    listeElement.parentElement.parentElement.hidden = '';
+    //listeSR.parentElement.parentElement.hidden = '';
+    boutonListe.hidden = 'true';
+    requeteAJAXgetAll(type, afficherListe);
+    //if(type=="Fiche") { requeteAJAXgetAll("PeutContenir", afficherListe)}
 });
+
+
 
 boutonCreerElement.addEventListener("click",function () {
     viderAffichage();
@@ -144,7 +147,7 @@ function actualiserListe(){
 function afficherListe(req) {
     viderListe();
     tab=JSON.parse(req.responseText);
-    let table = document.getElementById("listeElement");
+    let table = document.getElementById("listeElement")
     let trHead = document.createElement("tr");
     table.append(trHead);
     tabAttributs = Object.keys(tab[0]);
@@ -244,7 +247,6 @@ function fenetreObjet(req,valeur){
         tabAttributs=tabAttributs.slice(0,6);
     }
     for (attribut of tabAttributs) {
-        console.log(attribut);
         if (document.getElementById(attribut).type != "checkbox") {
             if(document.getElementById(attribut).tagName != "SELECT") {
                 document.getElementById(attribut).value = tab[attribut];
@@ -279,4 +281,18 @@ function requeteAJAXSuppression(objet, tabValeur){
     })
     let para="objet=" + objet + "&id=" + tabValeur;
     requete.send(para);
+}
+
+function requeteAJAXGetID(objet, nom, funcToExec) {
+    let url = "php/requetesGetID.php";
+    let requete = new XMLHttpRequest();
+    requete.open("POST", url, true);
+    requete.setRequestHeader(
+      "Content-Type",
+      "application/x-www-form-urlencoded"
+    );
+    requete.addEventListener("load", function () {
+      funcToExec(requete);
+    });
+    requete.send("val=" + nom);
 }

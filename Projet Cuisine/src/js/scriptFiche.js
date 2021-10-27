@@ -51,18 +51,17 @@ function ajouterFiche() {
     if (content[0].value !== '') {
         var updateTab = tab
         updateTab.push(content[0].value);
-        console.log(updateTab)
         requeteAJAXSuppression("Contenir", content[0].value);
         requeteAJAXSuppression("PeutContenir", content[0].value);
         requeteAJAXUpdate(type, JSON.stringify(updateTab));
+        idFiche = content[0].value;
     } else {
         requeteAJAXAdd(type, JSON.stringify(tab));
+        setTimeout(requeteAJAXGetID(type, content[1].value, avoirID), 250);
     }
-    idFiche = content[0].value;
-    ajouterContenirIngredientBD();
-    console.log("ok1")
-    ajouterSousRecetteBD();
-    console.log("ok2");
+    setTimeout(ajouterContenirIngredientBD, 500);
+    setTimeout(ajouterSousRecetteBD, 500);
+    alert("La fiche a bien été enregistrée")
 }
 
 function supprimerFicheBD(id){
@@ -72,18 +71,16 @@ function supprimerFicheBD(id){
 }
 
 function ajouterContenirIngredientBD() {
-    console.log("toto")
     let input = document.querySelectorAll("#ingredientsRecette select,#ingredientsRecette input");
-    console.log(input)
-    for (let i=0;i<input.length;i+=2) {
+    for (let i = 0; i < input.length; i += 2) {
         let tab = [idFiche,input[i].value,input[i+1].value];
         requeteAJAXAdd("Contenir", JSON.stringify(tab));
+        setTimeout(() => {}, 100);
     }
 }
 
 function ajouterSousRecetteBD() {
     let selects = document.querySelectorAll("#sousRecettesRecette select");
-    console.log(input)
     for (select of selects) {
         let tab = [idFiche, select.value]
         requeteAJAXAdd("PeutContenir", JSON.stringify(tab));
@@ -114,8 +111,13 @@ function ajouterEtape(contenu){
 
 function ajouterIngredient(contenu) {
     let tr = document.createElement("tr");
-    tr.innerHTML = "<td><select/></select></td>\n" +
-        "<td><input type='number' value='" + contenu[2] + "'><span>" + contenu[3] + "</span></td>\n" +
+    tr.innerHTML =
+      "<td><select/><option value=''>---</option></select></td>\n" +
+      "<td><input type='number' value='" +
+      contenu[2] +
+      "'min='0'/><span>" +
+      contenu[3] +
+      "</span></td>\n" +
         "<td><button class='boutonSupprimerElementRecette'>X</button></td>";
     ingredients.append(tr);
     tabSelect = document.querySelectorAll("#" + ingredients.id + " select");
@@ -123,7 +125,7 @@ function ajouterIngredient(contenu) {
     requeteAJAXgetAll("Ingredient", ajouterOptions, select);
     setTimeout(choisirOptions, 200, select, contenu[1]);
     select.addEventListener("change", () => {
-        requeteAJAXSelection("Ingredient", select.value, supprimerUnite, tr);
+        requeteAJAXSelection("Ingredient", event.target.value, changerUnite, event.target) 
     });
     tabBoutons = document.querySelectorAll("#" + ingredients.id + " .boutonSupprimerElementRecette");
     tabBoutons[tabBoutons.length - 1].addEventListener("click", function () {
@@ -134,10 +136,10 @@ function ajouterIngredient(contenu) {
 }
 
 
-function supprimerUnite(req, valeur, balise) {
+function changerUnite(req, valeur, target) {
     tab = JSON.parse(req.responseText);
     tabValeur = Object.values(tab);
-    balise.children[1].children[1].innerText = tabValeur[0]["unite"];
+    target.parentElement.parentElement.children[1].children[1].innerText = tabValeur[0]["unite"];
 }
 
 function ajouterSousRecette(contenu) {
@@ -291,8 +293,8 @@ function printFiche() {
             "<br><h3>" + name + "</h3><br>";
         document.getElementById("printEtape").innerHTML +=
             "<br><h3>" + name + "</h3><br>";
-        requeteAJAXSelection("Contenir", id, printSousRecetteIngredient, document.getElementById("printIngredient"))
-        requeteAJAXSelection("Fiche", id, printSousRecetteEtape, document.getElementById("printEtape"))
+        requeteAJAXSelection("Contenir", id, printSousRecetteIngredient, document.getElementById("printIngredient"));
+        requeteAJAXSelection("Fiche", id, printSousRecetteEtape, document.getElementById("printEtape"));
 
         document.getElementById("printSousRecettes").innerHTML +=
             name + "<br>";
