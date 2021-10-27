@@ -53,15 +53,24 @@ function ajouterFiche() {
         updateTab.push(content[0].value);
         requeteAJAXSuppression("Contenir", content[0].value);
         requeteAJAXSuppression("PeutContenir", content[0].value);
-        requeteAJAXUpdate(type, JSON.stringify(updateTab));
+        requeteAJAXUpdate(type, JSON.stringify(updateTab), () => {
+            ajouterContenirIngredientBD();
+            ajouterSousRecetteBD();
+        });
         idFiche = content[0].value;
     } else {
-        requeteAJAXAdd(type, JSON.stringify(tab));
-        setTimeout(requeteAJAXGetID(type, content[1].value, avoirID), 250);
+        requeteAJAXAdd(type, JSON.stringify(tab), () => {
+            requeteAJAXGetID(type, content[1].value, addAfterCreate);
+        });
     }
-    setTimeout(ajouterContenirIngredientBD, 500);
-    setTimeout(ajouterSousRecetteBD, 500);
     alert("La fiche a bien été enregistrée")
+}
+
+function addAfterCreate(req) {
+    tab = JSON.parse(req.responseText);
+    idFiche = tab[0]["idFiche"];
+    setTimeout(ajouterContenirIngredientBD, 200);
+    setTimeout(ajouterSousRecetteBD, 200);
 }
 
 function supprimerFicheBD(id){
@@ -352,9 +361,4 @@ function requeteAJAXSelectID(valeur){
     })
     let para="&val=" + valeur;
     requete.send(para);
-}
-
-function avoirID(req){
-    tab=JSON.parse(req.responseText);
-    idFiche=tab[0]["idFiche"];
 }

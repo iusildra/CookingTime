@@ -186,7 +186,7 @@ function afficherListe(req) {
 }
 
 // Requete d'ajout, elle permet d'ajouter un objet dans la BD ( et dans l'affichage ), elle prend un objet et un tableau de valeur
-function requeteAJAXAdd (objet, tabValeur) {
+function requeteAJAXAdd (objet, tabValeur, funcToExec) {
     let url = "php/requetesAjout.php";
     let requete = new XMLHttpRequest();
     requete.open("POST", url, true);
@@ -196,12 +196,15 @@ function requeteAJAXAdd (objet, tabValeur) {
             viderAffichage();
             requeteAJAXgetAll(type,afficherListe);
         }
+        if (objet == "Fiche") {
+            funcToExec()
+        }
     })
     let urlParametres = "objet=" + objet + "&tabValeur=" + tabValeur;
     requete.send(urlParametres);
 }
 
-function requeteAJAXUpdate(objet, tabValeur) {
+function requeteAJAXUpdate(objet, tabValeur, funcToExec) {
   let url = "php/requetesUpdate.php";
   let requete = new XMLHttpRequest();
   requete.open("POST", url, true);
@@ -210,6 +213,9 @@ function requeteAJAXUpdate(objet, tabValeur) {
     if (objet !== "PeutContenir" && objet !== "Fiche") {
       viderAffichage();
       requeteAJAXgetAll(type, afficherListe);
+      }
+      if (objet == "Fiche") {
+        funcToExec()
     }
   });
   let urlParametres = "objet=" + objet + "&tabValeur=" + tabValeur;
